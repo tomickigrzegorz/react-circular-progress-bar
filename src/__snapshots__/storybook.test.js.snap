@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Example/CircularProgressBar Default 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
+      "justifyContent": "center",
+      "padding": "40px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "borderRadius": "50%",
+        "boxShadow": "inset 0px 0px 10px 10px rgba(0, 161, 255, 0.1)",
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <svg
+      height={200}
+      viewBox="0 0 100 100"
+      width={200}
+    >
+      <text
+        dominantBaseline="central"
+        fill="#365b74"
+        fontSize="1.6rem"
+        fontWeight={400}
+        textAnchor="middle"
+        x="50%"
+        y="50%"
+      >
+        0
+        %
+      </text>
+      <circle
+        cx="50"
+        cy="50"
+        fill="none"
+        r="42"
+        shapeRendering="geometricPrecision"
+        strokeWidth={10}
+      />
+      <circle
+        cx="50"
+        cy="50"
+        data-angel={0}
+        fill="none"
+        r="42"
+        shapeRendering="geometricPrecision"
+        stroke="#00a1ff"
+        strokeDasharray="0, 20000"
+        strokeLinecap=""
+        strokeWidth={10}
+        transform="rotate(-90, 50, 50)"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Example/CircularProgressBar Linear Gradient 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "fontFamily": "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji",
+      "justifyContent": "center",
+      "padding": "40px",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "borderRadius": "50%",
+        "boxShadow": "",
+        "height": 200,
+        "width": 200,
+      }
+    }
+  >
+    <svg
+      height={200}
+      viewBox="0 0 100 100"
+      width={200}
+    >
+      <text
+        dominantBaseline="central"
+        fill="#365b74"
+        fontSize="1.6rem"
+        fontWeight={400}
+        textAnchor="middle"
+        x="50%"
+        y="50%"
+      >
+        0
+        %
+      </text>
+      <circle
+        cx="50"
+        cy="50"
+        fill="none"
+        r="42"
+        shapeRendering="geometricPrecision"
+        stroke="#e6e6e6"
+        strokeWidth={10}
+      />
+      <defs>
+        <linearGradient
+          id="linear-gradient"
+        >
+          <stop
+            offset="0%"
+            stopColor="yellow"
+          />
+          <stop
+            offset="100%"
+            stopColor="#ff0000"
+          />
+        </linearGradient>
+      </defs>
+      <circle
+        cx="50"
+        cy="50"
+        data-angel={0}
+        fill="none"
+        r="42"
+        shapeRendering="geometricPrecision"
+        stroke="url(#linear-gradient)"
+        strokeDasharray="0, 20000"
+        strokeLinecap="round"
+        strokeWidth={10}
+        transform="rotate(-90, 50, 50)"
+      />
+    </svg>
+  </div>
+</div>
+`;

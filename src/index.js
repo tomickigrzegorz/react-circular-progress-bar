@@ -1,17 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+
+import CircularProgressBar from './components/CircularProgressBar';
+
+const props = {
+  percent: 70,
+  colorSlice: "#E91E63",
+}
+
+// const props = {
+//   round: true,
+//   percent: 70,
+//   colorSlice: "#4CAF50",
+//   colorCircle: '#e6e6e6',
+//   linearGradient: ["yellow", "#ff0000"]
+// }
+
+// const props = {
+//   percent: 55,
+//   colorSlice: "#CDDC39",
+//   colorCircle: "#f1f1f1",
+//   fontWeight: 100
+// }
+
+// without number
+// const props = {
+//   percent: 60,
+//   colorSlice: "#000",
+//   colorCircle: "#e6e6e6",
+//   number: false
+// }
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <CircularProgressBar {...props} />,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

@@ -1,70 +1,82 @@
-# Getting Started with Create React App
+<h1 align="center">
+  react-circular-progress-bar
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  Simple circular progress bar.
+</p>
 
-## Available Scripts
+<p align="center">
+  <img src="https://img.shields.io/github/package-json/v/tomik23/react-circular-progress-bar">
+  <img src="https://img.shields.io/github/size/tomik23/react-circular-progress-bar/dist/CircularProgressBar.js">
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-green.svg">
+  </a>
+</p>
 
-In the project directory, you can run:
+<p align="center">
+  <img src="circular-progress-bar.png">
+</p>
 
-### `yarn start`
+<!-- ## Demo
+See the demo - [example](https://tomik23.github.io/circular-progress-bar/) -->
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Install
 
-### `yarn test`
+```bash
+yarn add react-circular-progress-bar
+# or
+npm install react-circular-progress-bar
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+```bash
+import CircularProgressBar from 'react-circular-progress-bar'
+```
 
-### `yarn build`
+```jsx
+const props = {
+  percent: 60, // is require
+  colorSlice: '#00a1ff',
+  colorCircle: '00a1ff',
+  stroke: 10,
+  round: true,
+  opacity: 10,
+  number: true,
+  size: 200,
+  fontColor: '#365b74',
+  fontSize: '1.6rem',
+  fontWeight: 400,
+  linearGradient: ["#ffff00", "brown"]
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<CircularProgressBar {...props} />
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Configuration of the plugin
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+props | type | default | require | description
+---- | :-------: | :-------: | :--------: | -----------
+percent | number |  | ✔ | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%
+colorSlice | string | `'#00a1ff'` | | Progress layer color and background ["#ffff00","brown" *](#colors-names)
+colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brown" *](#colors-names)
+stroke | number | `10` |  | Stroke width, chart thickness
+round | boolean | `false` |  | Path rounding
+opacity | number | `10` |  | Opacity box-shadow, 10 = 1s, 9 = 0.9 ... 1 = 0.1
+number | boolean | `true` |  | Add props number and set to false to hide the number with percent
+size | number | `200` |  | Size progress bar width and height in px
+fontSize | string | `1.6rem` |  | Font size. The font can be shown in units rem, em, px ...
+fontWeight | number | `400` |  | [number, normal, bold, bolder, lighter]
+fontColor | string | `'#365b74'` |  | Font color ["#ffff00","brown" *](#colors-names)
+linearGradient | array |  |  | Array of colors "lineargradient": ["#ffff00","brown" *](#colors-names)
 
-### `yarn eject`
+## Colors names
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[* See colors names](https://htmlcolorcodes.com/color-names/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Browsers support
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/vivaldi/vivaldi_48x48.png" alt="Vivaldi" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Vivaldi |
+| --------- | --------- | --------- | --------- | --------- |
+| IE11+, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
