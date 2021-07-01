@@ -8,7 +8,6 @@
 
 <p align="center">
   <img src="https://img.shields.io/github/package-json/v/tomik23/react-circular-progress-bar">
-  <img src="https://img.shields.io/github/size/tomik23/react-circular-progress-bar/dist/CircularProgressBar.js">
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green.svg">
   </a>
