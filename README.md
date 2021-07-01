@@ -18,21 +18,18 @@
   <img src="circular-progress-bar.png">
 </p>
 
-<!-- ## Demo
-See the demo - [example](https://tomik23.github.io/circular-progress-bar/) -->
-
 
 ## Install
 
 ```bash
-yarn add react-circular-progress-bar
+yarn add @tomik23/react-circular-progress-bar
 # or
-npm install react-circular-progress-bar
+npm install @tomik23/react-circular-progress-bar
 ```
 
 ## Usage
 ```jsx
-import CircularProgressBar from 'react-circular-progress-bar'
+import { CircularProgressBar } from '@tomik23/react-circular-progress-bar'
 ```
 
 ```jsx
