@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <img src="circular-progress-bar.png">
+  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/circular-progress-bar.png">
 </p>
 
 
