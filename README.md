@@ -31,7 +31,7 @@ npm install react-circular-progress-bar
 ```
 
 ## Usage
-```bash
+```jsx
 import CircularProgressBar from 'react-circular-progress-bar'
 ```
 
