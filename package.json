@@ -1,5 +1,5 @@
 {
-  "name": "react-circular-progress-bar",
+  "name": "@tomik23/react-circular-progress-bar",
   "version": "0.1.0",
   "private": false,
   "main": "dist/index.js",

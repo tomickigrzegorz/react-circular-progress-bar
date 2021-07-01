@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.linearGradient = exports.Default = exports.default = void 0;
+exports.WithoutNumber = exports.Simple = exports.linearGradient = exports.Default = exports.default = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -35,7 +35,8 @@ var Template = function Template(args) {
 var Default = Template.bind({});
 exports.Default = Default;
 Default.args = {
-  percent: 50
+  percent: 73,
+  colorSlice: "#E91E63"
 };
 var linearGradient = Template.bind({});
 exports.linearGradient = linearGradient;
@@ -45,4 +46,20 @@ linearGradient.args = {
   colorSlice: "#4CAF50",
   colorCircle: "#e6e6e6",
   linearGradient: ["yellow", "#ff0000"]
+};
+var Simple = Template.bind({});
+exports.Simple = Simple;
+Simple.args = {
+  percent: 55,
+  colorSlice: "#CDDC39",
+  colorCircle: "#f1f1f1",
+  fontWeight: 100
+};
+var WithoutNumber = Template.bind({});
+exports.WithoutNumber = WithoutNumber;
+WithoutNumber.args = {
+  percent: 60,
+  colorSlice: "#000",
+  colorCircle: "#e6e6e6",
+  number: false
 };

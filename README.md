@@ -39,7 +39,7 @@ import CircularProgressBar from 'react-circular-progress-bar'
 const props = {
   percent: 60, // is require
   colorSlice: '#00a1ff',
-  colorCircle: '00a1ff',
+  colorCircle: '#00a1ff',
   stroke: 10,
   round: true,
   opacity: 10,
