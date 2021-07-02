@@ -1,23 +1,31 @@
 {
   "name": "@tomik23/react-circular-progress-bar",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "main": "dist/index.js",
   "description": "A circular progress bar in svg",
   "author": "Grzegorz Tomicki",
   "dependencies": {
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clean": "rimraf dist",
+    "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
   },
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/tomik23/react-circular-progress-bar"
