@@ -1,6 +1,6 @@
 {
   "name": "@tomik23/react-circular-progress-bar",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "private": false,
   "main": "dist/index.js",
   "description": "A circular progress bar in svg",
@@ -58,5 +58,9 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://tomik23.github.io/react-circular-progress-bar"
+  "homepage": "https://tomik23.github.io/react-circular-progress-bar",
+  "devDependencies": {
+    "@babel/cli": "^7.14.5",
+    "cross-env": "^7.0.3"
+  }
 }
