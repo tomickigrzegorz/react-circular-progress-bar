@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-circular-progress-bar/static/css/main.b4b31a85.chunk.css",
-    "main.js": "/react-circular-progress-bar/static/js/main.6245f38f.chunk.js",
-    "main.js.map": "/react-circular-progress-bar/static/js/main.6245f38f.chunk.js.map",
+    "main.js": "/react-circular-progress-bar/static/js/main.d9263f1f.chunk.js",
+    "main.js.map": "/react-circular-progress-bar/static/js/main.d9263f1f.chunk.js.map",
     "runtime-main.js": "/react-circular-progress-bar/static/js/runtime-main.f007f0a7.js",
     "runtime-main.js.map": "/react-circular-progress-bar/static/js/runtime-main.f007f0a7.js.map",
     "static/js/2.f0368bdf.chunk.js": "/react-circular-progress-bar/static/js/2.f0368bdf.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.f007f0a7.js",
     "static/js/2.f0368bdf.chunk.js",
     "static/css/main.b4b31a85.chunk.css",
-    "static/js/main.6245f38f.chunk.js"
+    "static/js/main.d9263f1f.chunk.js"
   ]
 }
