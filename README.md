@@ -36,14 +36,14 @@ const props = {
   percent: 60, // is require
   colorSlice: '#00a1ff',
   colorCircle: '#00a1ff',
-  stroke: 10,
-  round: true,
-  opacity: 10,
-  number: true,
-  size: 200,
   fontColor: '#365b74',
   fontSize: '1.6rem',
   fontWeight: 400,
+  size: 200,
+  stroke: 10,
+  opacity: 10,
+  round: true,
+  number: true,
   linearGradient: ["#ffff00", "brown"]
 }
 
