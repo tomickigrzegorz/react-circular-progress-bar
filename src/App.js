@@ -31,16 +31,10 @@ function App() {
   const [seconds, setSeconds] = useState(propsA);
 
   useEffect(() => {
-
     const interval = setInterval(() => {
-      setSeconds({
-        percent: Math.floor((Math.random() * 100) + 1),
-        colorSlice: "#E91E63"
-      });
+      setSeconds({ ...propsA, percent: Math.floor((Math.random() * 100) + 1) });
     }, 3000);
-
     return () => clearInterval(interval);
-
   }, []);
 
   return (
