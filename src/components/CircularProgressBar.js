@@ -29,8 +29,6 @@ const CircularProgressBar = props => {
 
     if (percent > 100 || percent <= 0 || angle === percent) return;
 
-    console.log('test', percent, angle, counter);
-
     let request
     const performAnimation = () => {
       if (angle > percent) {
