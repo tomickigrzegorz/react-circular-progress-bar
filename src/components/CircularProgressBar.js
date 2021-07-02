@@ -1,74 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Text = ({ counter, fontSize, fontWeight }) => {
-  return (
-    <text
-      x="50%"
-      y="50%"
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      fill="#365b74"
-      textAnchor="middle"
-      dominantBaseline="central"
-    >
-      {counter}%
-    </text>
-  )
-}
-
-const CircleBackground = ({ stroke, colorCircle }) => {
-  return (
-    <circle
-      cx="50"
-      cy="50"
-      r="42"
-      shapeRendering="geometricPrecision"
-      fill="none"
-      stroke={colorCircle}
-      strokeWidth={stroke}>
-    </circle>
-  )
-}
-
-const CircleTop = (props) => {
-  const { linearGradient, counter, stroke, round, colorSlice } = props;
-  const dasharray = counter * 2.64 + ', 20000';
-  const gradient = linearGradient !== undefined ? "url(#linear-gradient)" : colorSlice
-
-  return (
-    <>
-      {linearGradient && <GradientLinear linearGradient={linearGradient} />}
-      <circle
-        cx="50"
-        cy="50"
-        r="42"
-        shapeRendering="geometricPrecision"
-        fill="none"
-        transform="rotate(-90, 50, 50)"
-        stroke={gradient}
-        strokeWidth={stroke}
-        strokeLinecap={round ? 'round' : ''}
-        strokeDasharray={dasharray}
-        data-angel={counter}>
-      </circle>
-    </>
-  )
-}
-
-const GradientLinear = ({ linearGradient }) => {
-  let number = -100;
-  return (
-    <defs>
-      <linearGradient id="linear-gradient">
-        {linearGradient.map((gradient, index) => {
-          number += 100;
-          return <stop key={index} offset={number / (linearGradient.length - 1) + '%'} stopColor={gradient}></stop>
-        })}
-      </linearGradient>
-    </defs>
-  );
-}
+import Text from './Text';
+import CircleBackground from './CircleBackground';
+import CircleTop from './CircleTop';
 
 const hex2rgb = (hex, opacity = 10) => {
   const c = typeof hex === 'string' ? parseInt(hex.replace('#', ''), 16) : hex;
@@ -87,20 +22,29 @@ const CircularProgressBar = props => {
   } = props;
 
   const [counter, setCounter] = useState(0)
+  const counterRef = useRef(null)
 
   useEffect(() => {
-    let request
+    let angle = counterRef.current?.dataset?.angel;
 
+    if (percent > 100 || percent <= 0 || angle === percent) return;
+
+    console.log('test', percent, angle, counter);
+
+    let request
     const performAnimation = () => {
-      if (counter >= percent) return;
-      setCounter(x => x + 1)
-      request = requestAnimationFrame(performAnimation)
+      if (angle > percent) {
+        setCounter(x => x - 1)
+      } else if (angle < percent) {
+        setCounter(x => x + 1)
+      }
     }
 
     request = requestAnimationFrame(performAnimation)
 
     return () => cancelAnimationFrame(request)
-  })
+
+  }, [counter, percent])
 
   const styleObj = (colorCircle) => {
     const boxShadow = colorCircle === undefined
@@ -116,7 +60,7 @@ const CircularProgressBar = props => {
 
   return (
     <div style={styleObj(colorCircle)}>
-      <svg width={size} height={size} viewBox="0 0 100 100">
+      <svg ref={counterRef} width={size} height={size} viewBox="0 0 100 100" data-angel={counter}>
         {number && <Text counter={counter} {...props} />}
         <CircleBackground counter={counter} {...props} />
         <CircleTop counter={counter} {...props} />
