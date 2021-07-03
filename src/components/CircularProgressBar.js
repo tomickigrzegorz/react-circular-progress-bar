@@ -1,96 +1,88 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { memo, useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
-const CircleBackground = ({ stroke, colorCircle }) => {
-  return (
-    <circle
-      cx="50"
-      cy="50"
-      r="42"
-      shapeRendering="geometricPrecision"
-      fill="none"
-      stroke={colorCircle}
-      strokeWidth={stroke}>
-    </circle>
-  )
-}
-
-const CircleText = ({ counter, fontSize, fontWeight, fontColor }) => {
-  return (
-    <text
-      x="50%"
-      y="50%"
-      fontSize={fontSize}
-      fontWeight={fontWeight}
-      fill={fontColor}
-      textAnchor="middle"
-      dominantBaseline="central"
-    >
-      {counter}%
-    </text>
-  )
-}
-
-const GradientLinear = ({ linearGradient }) => {
-  let number = -100;
-  return (
-    <defs>
-      <linearGradient id="linear-gradient">
-        {linearGradient.map((gradient, index) => {
-          number += 100;
-          return <stop key={index} offset={number / (linearGradient.length - 1) + '%'} stopColor={gradient}></stop>
-        })}
-      </linearGradient>
-    </defs>
-  );
-}
-
-const CircleTop = (props) => {
-  const { linearGradient, counter, stroke, round, colorSlice } = props;
-  const dasharray = counter * 2.64 + ', 20000';
-  const gradient = linearGradient !== undefined ? "url(#linear-gradient)" : colorSlice
-
-  return (
-    <>
-      {linearGradient && <GradientLinear linearGradient={linearGradient} />}
-      <circle
-        cx="50"
-        cy="50"
-        r="42"
-        shapeRendering="geometricPrecision"
-        fill="none"
-        transform="rotate(-90, 50, 50)"
-        stroke={gradient}
-        strokeWidth={stroke}
-        strokeLinecap={round ? 'round' : ''}
-        strokeDasharray={dasharray}
-      >
-      </circle>
-    </>
-  )
-}
+import CircleTop from './CircleTop';
+import CircleBackground from './CircleBackground';
+import CircleText from './CircleText';
 
 const hex2rgb = (hex, opacity = 10) => {
   const c = typeof hex === 'string' ? parseInt(hex.replace('#', ''), 16) : hex;
   return `rgba(${c >> 16}, ${(c & 0xff00) >> 8}, ${c & 0xff}, ${opacity / 100})`;
 }
 
-const CircularProgressBar = props => {
+const styleObj = (props, colorCircle) => {
+  const { stroke, colorSlice, opacity, size } = props
+
+  const boxShadow = colorCircle === undefined
+    ? `inset 0px 0px ${stroke}px ${stroke}px ${hex2rgb(colorSlice, opacity)}`
+    : '';
+  return {
+    width: size,
+    height: size,
+    borderRadius: '50%',
+    boxShadow
+  }
+}
+
+const useOnScreen = ref => {
+  const [isIntersecting, setIntersecting] = useState(false)
+
+  useEffect(() => {
+
+    const config = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 1.0,
+    }
+
+    let ovserver;
+    if (ref.current) {
+      ovserver = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting && entry.intersectionRatio >= 0.1) {
+              setIntersecting(entry.isIntersecting)
+              ovserver.unobserve(ref.current)
+            }
+          });
+        }, config
+      )
+      ovserver.observe(ref.current)
+    }
+
+    return () => {
+      ovserver.disconnect()
+    };
+  }, [ref])
+
+  return isIntersecting
+}
+
+const CircleWrapper = props => {
+  const { id, size } = props;
+  return (
+    <svg width={size} height={size} data-index={id} viewBox="0 0 100 100">
+      <CircleText {...props} />
+      <CircleBackground {...props} />
+      <CircleTop {...props} />
+    </svg>
+  )
+}
+
+const CircularProgressBar = memo(props => {
   const {
     percent,
-    number,
-    stroke,
-    colorSlice,
     colorCircle,
-    opacity,
-    size
   } = props;
 
   const [counter, setCounter] = useState(0)
-  const counterRef = useRef(null)
+  const ref = useRef()
+  const show = useOnScreen(ref)
 
   useEffect(() => {
-    let angle = counterRef.current?.dataset?.angel;
+    if (!show) return;
+
+    let angle = ref.current?.dataset?.angel;
 
     if (percent > 100 || percent <= 0 || angle === percent) return;
 
@@ -106,41 +98,26 @@ const CircularProgressBar = props => {
     request = requestAnimationFrame(performAnimation)
 
     return () => cancelAnimationFrame(request)
-
-  }, [counter, percent])
-
-  const styleObj = (colorCircle) => {
-    const boxShadow = colorCircle === undefined
-      ? `inset 0px 0px ${stroke}px ${stroke}px ${hex2rgb(colorSlice, opacity)}`
-      : '';
-    return {
-      width: size,
-      height: size,
-      borderRadius: '50%',
-      boxShadow
-    }
-  };
+  }, [counter, show, percent])
 
   return (
-    <div style={styleObj(colorCircle)}>
-      <svg ref={counterRef} width={size} height={size} viewBox="0 0 100 100" data-angel={counter}>
-        {number && <CircleText counter={counter} {...props} />}
-        <CircleBackground counter={counter} {...props} />
-        <CircleTop counter={counter} {...props} />
-      </svg>
+    <div ref={ref} style={styleObj(props, colorCircle)} data-angel={counter}>
+      <CircleWrapper counter={counter} {...props} />
     </div>
   );
-}
+})
 
 CircularProgressBar.propTypes = {
   percent: PropTypes.number.isRequired,
   colorSlice: PropTypes.string,
   colorCircle: PropTypes.string,
+  initial: PropTypes.bool,
   stroke: PropTypes.number,
   round: PropTypes.bool,
   opacity: PropTypes.number,
   number: PropTypes.bool,
   size: PropTypes.number,
+  index: PropTypes.number,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.number,
   fontColor: PropTypes.string,
@@ -150,6 +127,7 @@ CircularProgressBar.propTypes = {
 CircularProgressBar.defaultProps = {
   colorSlice: '#00a1ff',
   round: false,
+  initial: true,
   number: true,
   stroke: 10,
   opacity: 10,
