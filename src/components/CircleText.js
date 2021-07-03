@@ -1,8 +1,8 @@
 import React, { memo } from 'react';
 
-const CircleText = memo(({ number, counter, fontSize, fontWeight, fontColor }) => {
-  return number
-    ? (
+const CircleText = memo(
+  ({ number, counter, fontSize, fontWeight, fontColor }) => {
+    return number ? (
       <text
         x="50%"
         y="50%"
@@ -14,8 +14,8 @@ const CircleText = memo(({ number, counter, fontSize, fontWeight, fontColor }) =
       >
         {counter}%
       </text>
-    )
-    : null;
-})
+    ) : null;
+  }
+);
 
 export default CircleText;

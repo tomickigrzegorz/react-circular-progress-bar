@@ -9,9 +9,9 @@ const CircleBackground = memo(({ stroke, colorCircle }) => {
       shapeRendering="geometricPrecision"
       fill="none"
       stroke={colorCircle}
-      strokeWidth={stroke}>
-    </circle>
-  )
-})
+      strokeWidth={stroke}
+    ></circle>
+  );
+});
 
 export default CircleBackground;
