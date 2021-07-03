@@ -7,16 +7,16 @@ const defaults = [
     percent: 50,
     colorSlice: '#E91E63',
   },
-  // {
-  //   id: 1,
-  //   percent: 60,
-  //   colorSlice: '#ffc107',
-  // },
-  // {
-  //   id: 2,
-  //   percent: 70,
-  //   colorSlice: '#00bcd4',
-  // },
+  {
+    id: 1,
+    percent: 60,
+    colorSlice: '#ffc107',
+  },
+  {
+    id: 2,
+    percent: 70,
+    colorSlice: '#00bcd4',
+  },
 ];
 
 const lineargradient = [
@@ -28,22 +28,22 @@ const lineargradient = [
     colorSlice: '#4CAF50',
     colorCircle: '#e6e6e6',
   },
-  // {
-  //   id: 4,
-  //   linearGradient: ['#ff0000', '#9c27b0'],
-  //   round: true,
-  //   percent: 80,
-  //   colorSlice: '#4CAF50',
-  //   colorCircle: '#e6e6e6',
-  // },
-  // {
-  //   id: 5,
-  //   linearGradient: ['#ff0000', 'yellow'],
-  //   round: true,
-  //   percent: 90,
-  //   colorSlice: '#4CAF50',
-  //   colorCircle: '#e6e6e6',
-  // },
+  {
+    id: 4,
+    linearGradient: ['#ff0000', '#9c27b0'],
+    round: true,
+    percent: 80,
+    colorSlice: '#4CAF50',
+    colorCircle: '#e6e6e6',
+  },
+  {
+    id: 5,
+    linearGradient: ['#ff0000', 'yellow'],
+    round: true,
+    percent: 90,
+    colorSlice: '#4CAF50',
+    colorCircle: '#e6e6e6',
+  },
 ];
 
 const simple = [
@@ -54,20 +54,20 @@ const simple = [
     colorCircle: '#f1f1f1',
     fontWeight: 100,
   },
-  // {
-  //   id: 7,
-  //   percent: 75,
-  //   colorSlice: '#ffc107',
-  //   colorCircle: '#e6e6e6',
-  //   fontWeight: 100,
-  // },
-  // {
-  //   id: 8,
-  //   percent: 85,
-  //   colorSlice: '#00bcd4',
-  //   colorCircle: '#e6e6e6',
-  //   fontWeight: 100,
-  // },
+  {
+    id: 7,
+    percent: 75,
+    colorSlice: '#ffc107',
+    colorCircle: '#e6e6e6',
+    fontWeight: 100,
+  },
+  {
+    id: 8,
+    percent: 85,
+    colorSlice: '#00bcd4',
+    colorCircle: '#e6e6e6',
+    fontWeight: 100,
+  },
 ];
 
 const withoutNumber = [
@@ -78,20 +78,20 @@ const withoutNumber = [
     colorCircle: '#e6e6e6',
     number: false,
   },
-  // {
-  //   id: 10,
-  //   percent: 70,
-  //   colorSlice: '#ffc107',
-  //   colorCircle: '#e6e6e6',
-  //   number: false,
-  // },
-  // {
-  //   id: 11,
-  //   percent: 80,
-  //   colorSlice: '#00bcd4',
-  //   colorCircle: '#e6e6e6',
-  //   number: false,
-  // },
+  {
+    id: 10,
+    percent: 70,
+    colorSlice: '#ffc107',
+    colorCircle: '#e6e6e6',
+    number: false,
+  },
+  {
+    id: 11,
+    percent: 80,
+    colorSlice: '#00bcd4',
+    colorCircle: '#e6e6e6',
+    number: false,
+  },
 ];
 
 function App() {
