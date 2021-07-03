@@ -1,0 +1,32 @@
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    node: true,
+    es6: true,
+  },
+  parserOptions: {
+    parser: 'babel-eslint',
+    ecmaVersion: 2020,
+    sourceType: 'module',
+  },
+  extends: ['plugin:react/recommended', 'plugin:prettier/recommended'],
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': [
+      'warn',
+      {
+        semi: true,
+        singleQuote: true,
+        tabWidth: 2,
+        endOfLine: 'auto',
+        printWidth: 80,
+      },
+    ],
+    'react/display-name': 'off',
+    'react/prop-types': 'off',
+    'comma-dangle': ['error', 'only-multiline'],
+    'linebreak-style': ['error', 'windows'],
+    'no-param-reassign': [2, { props: false }],
+  },
+};
