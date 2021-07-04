@@ -10,7 +10,7 @@ const CircleBackground = memo(({ stroke, strokeBottom, colorCircle }) => {
       fill="none"
       stroke={colorCircle}
       strokeWidth={strokeBottom || stroke}
-    ></circle>
+    />
   );
 });
 

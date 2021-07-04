@@ -42,7 +42,7 @@ const CircleTop = memo(
           strokeWidth={stroke}
           strokeLinecap={round ? 'round' : ''}
           strokeDasharray={counter * 2.64 + ', 20000'}
-        ></circle>
+        />
       </>
     );
   }
