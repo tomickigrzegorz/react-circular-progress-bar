@@ -3,7 +3,9 @@
 </h1>
 
 <p align="center">
-  Simple circular progress bar.
+React library to help developers to draw animated, cross-browser, highly customizable progress circles using SVG and plain JavaScript.
+
+Also supports the IntersectionObserver API, which allows to start the animation only when the progress bar appears in the view.
 </p>
 
 <p align="center">
@@ -17,6 +19,8 @@
   <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/circular-progress-bar.png">
 </p>
 
+## Demo
+See the demo - [example](https://tomik23.github.io/react-circular-progress-bar/)
 
 ## Install
 
@@ -32,6 +36,7 @@ import { CircularProgressBar } from '@tomik23/react-circular-progress-bar'
 ```
 
 ```jsx
+// available control variables
 const props = {
   percent: 60, // is require
   colorSlice: '#00a1ff',
@@ -41,6 +46,7 @@ const props = {
   fontWeight: 400,
   size: 200,
   stroke: 10,
+  strokeBottom: 5,
   opacity: 10,
   round: true,
   number: true,
@@ -50,6 +56,85 @@ const props = {
 <CircularProgressBar {...props} />
 ```
 
+### 1 example
+```jsx
+const config = {
+  percent: 50,
+  colorSlice: '#E91E63',
+}
+
+<CircularProgressBar {...config} />
+```
+
+### 2 example
+```jsx
+const config = {
+  percent: 70,
+  round: true,
+  colorCircle: '#e6e6e6',
+  linearGradient: ['yellow', '#ff0000'],
+}
+
+<CircularProgressBar {...config} />
+```
+
+### 3 example
+```jsx
+const config = {
+  percent: 55,
+  colorSlice: '#CDDC39',
+  colorCircle: '#f1f1f1',
+  fontWeight: 100,
+}
+
+<CircularProgressBar {...config} />
+```
+
+### 4 example
+```jsx
+const config = {
+  percent: 60,
+  colorSlice: '#000',
+  colorCircle: '#e6e6e6',
+  number: false,
+}
+
+<CircularProgressBar {...config} />
+```
+
+### Update percent
+```jsx
+const config = {
+  id: 0, // important
+  percent: 50,
+  colorSlice: '#E91E63',
+}
+
+function App() {
+  const [first, setFirst] = useState(config);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFirst({
+        ...config,
+        id: 0,
+        percent: Math.floor(Math.random() * 100 + 1),
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const newObject = { ...config, ...first };
+
+  return (
+    <div>
+      <CircularProgressBar {...newObject} />
+    </div>
+  );
+}
+```
+
+
 ## Configuration of the plugin
 
 props | type | default | require | description
@@ -58,6 +143,7 @@ percent | number |  | ✔ | Represents the progress bar and animation of the ani
 colorSlice | string | `'#00a1ff'` | | Progress layer color and background ["#ffff00","brown" *](#colors-names)
 colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brown" *](#colors-names)
 stroke | number | `10` |  | Stroke width, chart thickness
+strokrBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle
 round | boolean | `false` |  | Path rounding
 opacity | number | `10` |  | Opacity box-shadow, 10 = 1s, 9 = 0.9 ... 1 = 0.1
 number | boolean | `true` |  | Add props number and set to false to hide the number with percent
