@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 
-const CircleBackground = memo(({ stroke, colorCircle }) => {
+const CircleBackground = memo(({ stroke, strokeBottom, colorCircle }) => {
   return (
     <circle
       cx="50"
@@ -9,7 +9,7 @@ const CircleBackground = memo(({ stroke, colorCircle }) => {
       shapeRendering="geometricPrecision"
       fill="none"
       stroke={colorCircle}
-      strokeWidth={stroke}
+      strokeWidth={strokeBottom || stroke}
     ></circle>
   );
 });

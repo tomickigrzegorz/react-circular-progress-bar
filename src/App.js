@@ -25,7 +25,6 @@ const lineargradient = [
     linearGradient: ['yellow', '#ff0000'],
     round: true,
     percent: 70,
-    colorSlice: '#4CAF50',
     colorCircle: '#e6e6e6',
   },
   {
@@ -33,7 +32,6 @@ const lineargradient = [
     linearGradient: ['#ff0000', '#9c27b0'],
     round: true,
     percent: 80,
-    colorSlice: '#4CAF50',
     colorCircle: '#e6e6e6',
   },
   {
@@ -41,7 +39,6 @@ const lineargradient = [
     linearGradient: ['#ff0000', 'yellow'],
     round: true,
     percent: 90,
-    colorSlice: '#4CAF50',
     colorCircle: '#e6e6e6',
   },
 ];

@@ -106,6 +106,7 @@ CircularProgressBar.propTypes = {
   colorCircle: PropTypes.string,
   initial: PropTypes.bool,
   stroke: PropTypes.number,
+  strokeBottom: PropTypes.number,
   round: PropTypes.bool,
   opacity: PropTypes.number,
   number: PropTypes.bool,
