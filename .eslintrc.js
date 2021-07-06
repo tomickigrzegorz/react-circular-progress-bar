@@ -10,7 +10,11 @@ module.exports = {
     ecmaVersion: 2020,
     sourceType: 'module',
   },
-  extends: ['plugin:react/recommended', 'plugin:prettier/recommended'],
+  extends: [
+    'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
+    'plugin:prettier/recommended',
+  ],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': [
@@ -26,7 +30,7 @@ module.exports = {
     'react/display-name': 'off',
     'react/prop-types': 'off',
     'comma-dangle': ['error', 'only-multiline'],
-    'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 0,
     'no-param-reassign': [2, { props: false }],
   },
 };
