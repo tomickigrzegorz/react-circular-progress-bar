@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.css": "/react-circular-progress-bar/static/css/main.13695d2e.chunk.css",
-    "main.js": "/react-circular-progress-bar/static/js/main.8a7432bf.chunk.js",
-    "main.js.map": "/react-circular-progress-bar/static/js/main.8a7432bf.chunk.js.map",
-    "runtime-main.js": "/react-circular-progress-bar/static/js/runtime-main.f007f0a7.js",
-    "runtime-main.js.map": "/react-circular-progress-bar/static/js/runtime-main.f007f0a7.js.map",
-    "static/js/2.f0368bdf.chunk.js": "/react-circular-progress-bar/static/js/2.f0368bdf.chunk.js",
-    "static/js/2.f0368bdf.chunk.js.map": "/react-circular-progress-bar/static/js/2.f0368bdf.chunk.js.map",
-    "index.html": "/react-circular-progress-bar/index.html",
-    "static/css/main.13695d2e.chunk.css.map": "/react-circular-progress-bar/static/css/main.13695d2e.chunk.css.map",
-    "static/js/2.f0368bdf.chunk.js.LICENSE.txt": "/react-circular-progress-bar/static/js/2.f0368bdf.chunk.js.LICENSE.txt"
+    "0.d3a39933.iframe.bundle.js": "./0.d3a39933.iframe.bundle.js",
+    "main.js": "./main.1134d541.iframe.bundle.js",
+    "runtime~main.js": "./runtime~main.70d660d8.iframe.bundle.js",
+    "vendors~main.js": "./vendors~main.fa212f01.iframe.bundle.js",
+    "vendors~main.js.map": "./vendors~main.fa212f01.iframe.bundle.js.map",
+    "4.c102f879.iframe.bundle.js": "./4.c102f879.iframe.bundle.js",
+    "4.c102f879.iframe.bundle.js.map": "./4.c102f879.iframe.bundle.js.map",
+    "5.98f6f1c1.iframe.bundle.js": "./5.98f6f1c1.iframe.bundle.js",
+    "6.146a6607.iframe.bundle.js": "./6.146a6607.iframe.bundle.js",
+    "6.146a6607.iframe.bundle.js.map": "./6.146a6607.iframe.bundle.js.map",
+    "7.7725290f.iframe.bundle.js": "./7.7725290f.iframe.bundle.js",
+    "4.c102f879.iframe.bundle.js.LICENSE.txt": "./4.c102f879.iframe.bundle.js.LICENSE.txt",
+    "6.146a6607.iframe.bundle.js.LICENSE.txt": "./6.146a6607.iframe.bundle.js.LICENSE.txt",
+    "iframe.html": "./iframe.html",
+    "vendors~main.fa212f01.iframe.bundle.js.LICENSE.txt": "./vendors~main.fa212f01.iframe.bundle.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f007f0a7.js",
-    "static/js/2.f0368bdf.chunk.js",
-    "static/css/main.13695d2e.chunk.css",
-    "static/js/main.8a7432bf.chunk.js"
+    "runtime~main.70d660d8.iframe.bundle.js",
+    "vendors~main.fa212f01.iframe.bundle.js",
+    "main.1134d541.iframe.bundle.js"
   ]
 }
