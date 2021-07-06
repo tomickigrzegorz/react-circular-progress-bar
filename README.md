@@ -91,7 +91,7 @@ function App() {
 props | type | default | require | description
 ---- | :-------: | :-------: | :--------: | -----------
 percent | number |  | ✔ | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%
-id | number | | | If you want to update component you have to add `id` to each of them
+id | number | | | If you want to update a component, you need to add an `id` to each of them. Also when you want to display several components with different gradients - `linearGradient`
 colorSlice | string | `'#00a1ff'` | | Progress layer color and background ["#ffff00","brown" *](#colors-names)
 colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brown" *](#colors-names)
 stroke | number | `10` |  | Stroke width, chart thickness
