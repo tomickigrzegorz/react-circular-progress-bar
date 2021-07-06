@@ -25,25 +25,25 @@ const styleObj = ({ stroke, colorSlice, colorCircle, opacity, size }) => {
 const useOnScreen = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);
 
-  const config = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.5,
-  };
-
-  const observer = new IntersectionObserver(([entry]) => {
-    if (entry.intersectionRatio >= 0.5) {
-      setIntersecting(entry.isIntersecting);
-    }
-  }, config);
-
   useEffect(() => {
+    const config = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5,
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.intersectionRatio >= 0.5) {
+        setIntersecting(entry.isIntersecting);
+      }
+    }, config);
+
     if (ref && ref.current) observer.observe(ref.current);
 
     return () => {
-      if (ref.current) observer.unobserve(ref.current);
+      observer.disconnect();
     };
-  }, []);
+  }, [ref]);
 
   return isIntersecting;
 };
@@ -72,12 +72,14 @@ const GradientLinear = ({ index, linearGradient }) => {
 const CircleTop = memo(
   ({ id, linearGradient, counter, stroke, round, colorSlice }) => {
     const gradient =
-      linearGradient !== undefined ? `url(#linear-gradient-${id})` : colorSlice;
+      linearGradient !== undefined
+        ? `url(#linear-gradient-${id || 0})`
+        : colorSlice;
 
     return (
       <>
         {linearGradient && (
-          <GradientLinear index={id} linearGradient={linearGradient} />
+          <GradientLinear index={id || 0} linearGradient={linearGradient} />
         )}
         <circle
           cx="50"
@@ -129,12 +131,13 @@ const CircleText = memo(
 );
 
 const CircleWrapper = memo((props) => {
+  const { id, size } = props;
   return (
     <svg
       role="img"
-      width={props.size}
-      height={props.size}
-      data-index={props.id}
+      width={size}
+      height={size}
+      data-index={id || 0}
       viewBox="0 0 100 100"
       aria-labelledby="circular progress bar"
     >

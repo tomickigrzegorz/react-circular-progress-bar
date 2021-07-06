@@ -1,1 +1,3 @@
-export { default } from './CircularProgressBar';
+import CircularProgressBar from './CircularProgressBar';
+
+export { CircularProgressBar };
