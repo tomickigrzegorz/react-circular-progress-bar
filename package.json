@@ -1,10 +1,9 @@
 {
   "name": "@tomik23/react-circular-progress-bar",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "private": false,
   "license": "MIT",
-  "main": "lib/index.js",
-  "module": "lib/index.esm.js",
+  "main": "dist/index.js",
   "description": "A circular progress bar in svg",
   "author": "Grzegorz Tomicki",
   "scripts": {
