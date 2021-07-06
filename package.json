@@ -1,37 +1,33 @@
 {
   "name": "@tomik23/react-circular-progress-bar",
-  "version": "0.1.11",
+  "version": "0.1.12",
   "private": false,
   "license": "MIT",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
+  "module": "lib/index.esm.js",
   "description": "A circular progress bar in svg",
   "author": "Grzegorz Tomicki",
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
-  },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "predeploy": "npm run build-storybook",
+    "deploy": "gh-pages -d storybook-static",
+    "start": "npm run storybook",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rimraf dist",
-    "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,stories.js,__snapshots__"
+    "build": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --ignore '**/*.stories.js'",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "files": [
     "dist",
     "README.md"
   ],
+  "bugs": {
+    "url": "https://github.com/tomik23/react-circular-progress-bar/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomik23/react-circular-progress-bar"
+    "url": "git+https://github.com/tomik23/react-circular-progress-bar.git"
   },
   "eslintConfig": {
     "extends": [
@@ -49,34 +45,55 @@
       }
     ]
   },
-  "keywords": [
-    "svg",
-    "circular",
-    "progress-bar",
-    "animation"
+  "tags": [
+    "react",
+    "circular-progress-bar"
   ],
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [
+    "react-component",
+    "progress",
+    "progress-bar",
+    "circular-progress-bar"
+  ],
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "homepage": "https://github.com/tomik23/react-circular-progress-bar",
+  "dependencies": {
+    "prop-types": "^15.7.2"
   },
-  "homepage": "https://tomik23.github.io/react-circular-progress-bar",
   "devDependencies": {
     "@babel/cli": "^7.14.5",
+    "@babel/core": "^7.14.6",
+    "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "@storybook/addon-controls": "^6.3.2",
+    "@storybook/addon-essentials": "^6.3.2",
+    "@storybook/addon-storyshots": "^6.3.2",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.3.2",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
+    "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
     "gh-pages": "^3.2.3",
-    "prettier": "^2.3.2"
+    "intersection-observer": "^0.12.0",
+    "prettier": "^2.3.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-test-renderer": "^17.0.2",
+    "web-vitals": "^1.0.1"
+  },
+  "peerDependencies": {
+    "react": "^16.0.0 || ^17.0.0"
   }
 }
