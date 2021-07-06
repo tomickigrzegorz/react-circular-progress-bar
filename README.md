@@ -4,8 +4,6 @@
 
 <p align="center">
 React library to help developers to draw animated, cross-browser, highly customizable progress circles using SVG and plain JavaScript.
-
-Also supports the IntersectionObserver API, which allows to start the animation only when the progress bar appears in the view.
 </p>
 
 <p align="center">
