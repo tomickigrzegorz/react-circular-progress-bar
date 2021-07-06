@@ -10,6 +10,7 @@
     "predeploy": "npm run build-storybook",
     "deploy": "gh-pages -d storybook-static",
     "start": "npm run storybook",
+    "start:example": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "clean": "rimraf dist",
