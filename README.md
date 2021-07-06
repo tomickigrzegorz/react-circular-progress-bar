@@ -3,7 +3,9 @@
 </h1>
 
 <p align="center">
-  Simple circular progress bar.
+React library to help developers to draw animated, cross-browser, highly customizable progress circles using SVG and plain JavaScript.
+
+Also supports the IntersectionObserver API, which allows to start the animation only when the progress bar appears in the view.
 </p>
 
 <p align="center">
@@ -17,6 +19,8 @@
   <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/circular-progress-bar.png">
 </p>
 
+## Demo
+See the demo - [example](https://tomik23.github.io/react-circular-progress-bar/)
 
 ## Install
 
@@ -32,6 +36,7 @@ import { CircularProgressBar } from '@tomik23/react-circular-progress-bar'
 ```
 
 ```jsx
+// available control variables
 const props = {
   percent: 60, // is require
   colorSlice: '#00a1ff',
@@ -41,6 +46,7 @@ const props = {
   fontWeight: 400,
   size: 200,
   stroke: 10,
+  strokeBottom: 5,
   opacity: 10,
   round: true,
   number: true,
@@ -49,21 +55,55 @@ const props = {
 
 <CircularProgressBar {...props} />
 ```
+### Update percent
+> If you want to update component you have to add `id` to each of them
+```jsx
+const config = {
+  id: 0, // important
+  percent: 50,
+  colorSlice: '#E91E63',
+}
+
+function App() {
+  const [update, setUpdate] = useState(config);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setUpdate({
+        ...config,
+        id: 0, // we indicate which component we want to change
+        percent: Math.floor(Math.random() * 100 + 1),
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const newObject = { ...config, ...update };
+
+  return (
+    <div>
+      <CircularProgressBar {...newObject} />
+    </div>
+  );
+}
+```
 
 ## Configuration of the plugin
 
 props | type | default | require | description
 ---- | :-------: | :-------: | :--------: | -----------
 percent | number |  | ✔ | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%
+id | number | | | If you want to update component you have to add `id` to each of them
 colorSlice | string | `'#00a1ff'` | | Progress layer color and background ["#ffff00","brown" *](#colors-names)
 colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brown" *](#colors-names)
 stroke | number | `10` |  | Stroke width, chart thickness
+strokrBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
 round | boolean | `false` |  | Path rounding
-opacity | number | `10` |  | Opacity box-shadow, 10 = 1s, 9 = 0.9 ... 1 = 0.1
+opacity | number | `10` |  | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1
 number | boolean | `true` |  | Add props number and set to false to hide the number with percent
 size | number | `200` |  | Size progress bar width and height in px
 fontSize | string | `1.6rem` |  | Font size. The font can be shown in units rem, em, px ...
-fontWeight | number | `400` |  | [number, normal, bold, bolder, lighter]
+fontWeight | number | `400` |  | 400, 600, ...
 fontColor | string | `'#365b74'` |  | Font color ["#ffff00","brown" *](#colors-names)
 linearGradient | array |  |  | Array of colors "lineargradient": ["#ffff00","brown" *](#colors-names)
 
