@@ -1,20 +1,20 @@
 {
   "name": "@tomik23/react-circular-progress-bar",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "description": "A circular progress bar in svg",
   "author": "Grzegorz Tomicki",
   "scripts": {
     "predeploy": "npm run build-storybook",
     "deploy": "gh-pages -d storybook-static",
-    "start": "npm run storybook",
-    "start:example": "react-scripts start",
+    "start:storybook": "npm run storybook",
+    "build": "rollup -c",
+    "start": "react-scripts start",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "clean": "rimraf dist",
-    "compile": "npm run clean && cross-env NODE_ENV=production babel src/components --out-dir dist --ignore '**/*.stories.js'",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -45,7 +45,7 @@
   "keywords": [
     "svg",
     "circular",
-    "progress-bar",
+    "progressbar",
     "animation"
   ],
   "browserslist": {
@@ -62,8 +62,8 @@
   },
   "homepage": "https://github.com/tomik23/react-circular-progress-bar",
   "peerDependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0",
     "react-scripts": "4.0.3"
   },
   "dependencies": {
@@ -74,6 +74,8 @@
     "@babel/core": "^7.14.6",
     "@babel/preset-env": "^7.14.7",
     "@babel/preset-react": "^7.14.5",
+    "@rollup/plugin-commonjs": "^19.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.0",
     "@storybook/addon-controls": "^6.3.2",
     "@storybook/addon-essentials": "^6.3.2",
     "@storybook/addon-storyshots": "^6.3.2",
@@ -84,19 +86,21 @@
     "@testing-library/user-event": "^12.1.10",
     "babel-loader": "^8.2.2",
     "cross-env": "^7.0.3",
+    "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-loader": "^4.0.2",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-react": "^7.24.0",
-    "eslint": "^7.30.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "gh-pages": "^3.2.3",
     "intersection-observer": "^0.12.0",
     "prettier": "^2.3.2",
+    "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "react": "^17.0.2",
-    "rimraf": "^3.0.2",
+    "rollup": "^2.52.8",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-delete": "^2.0.0",
     "web-vitals": "^1.0.1"
   }
 }
