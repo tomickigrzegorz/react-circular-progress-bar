@@ -1,5 +1,7 @@
-import React, { memo, useRef, useEffect, useState } from 'react';
+import React, { memo, useRef, useEffect, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+
+const globalProps = React.createContext();
 
 const hex2rgb = (hex, opacity = 10) => {
   const c = typeof hex === 'string' ? parseInt(hex.replace('#', ''), 16) : hex;
@@ -48,7 +50,9 @@ const useOnScreen = (ref) => {
   return isIntersecting;
 };
 
-const GradientLinear = ({ index, linearGradient }) => {
+const GradientLinear = ({ index }) => {
+  let { linearGradient } = useContext(globalProps);
+
   let number = -100;
   let id = `linear-gradient-${index}`;
   return (
@@ -69,36 +73,38 @@ const GradientLinear = ({ index, linearGradient }) => {
   );
 };
 
-const CircleTop = memo(
-  ({ id, linearGradient, counter, stroke, round, colorSlice }) => {
-    const gradient =
-      linearGradient !== undefined
-        ? `url(#linear-gradient-${id || 0})`
-        : colorSlice;
+const CircleTop = memo(() => {
+  let { id, linearGradient, counter, stroke, round, colorSlice } =
+    useContext(globalProps);
 
-    return (
-      <>
-        {linearGradient && (
-          <GradientLinear index={id || 0} linearGradient={linearGradient} />
-        )}
-        <circle
-          cx="50"
-          cy="50"
-          r="42"
-          shapeRendering="geometricPrecision"
-          fill="none"
-          transform="rotate(-90, 50, 50)"
-          stroke={gradient}
-          strokeWidth={stroke}
-          strokeLinecap={round ? 'round' : ''}
-          strokeDasharray={counter * 2.64 + ', 20000'}
-        />
-      </>
-    );
-  }
-);
+  const gradient =
+    linearGradient !== undefined
+      ? `url(#linear-gradient-${id || 0})`
+      : colorSlice;
 
-const CircleBackground = memo(({ stroke, strokeBottom, colorCircle }) => {
+  return (
+    <>
+      {linearGradient && (
+        <GradientLinear index={id || 0} linearGradient={linearGradient} />
+      )}
+      <circle
+        cx="50"
+        cy="50"
+        r="42"
+        shapeRendering="geometricPrecision"
+        fill="none"
+        transform="rotate(-90, 50, 50)"
+        stroke={gradient}
+        strokeWidth={stroke}
+        strokeLinecap={round ? 'round' : 'butt'}
+        strokeDasharray={counter * 2.64 + ', 20000'}
+      />
+    </>
+  );
+});
+
+const CircleBackground = memo(() => {
+  let { stroke, strokeBottom, colorCircle } = useContext(globalProps);
   return (
     <circle
       cx="50"
@@ -112,26 +118,26 @@ const CircleBackground = memo(({ stroke, strokeBottom, colorCircle }) => {
   );
 });
 
-const CircleText = memo(
-  ({ number, counter, fontSize, fontWeight, fontColor }) => {
-    return number ? (
-      <text
-        x="50%"
-        y="50%"
-        fontSize={fontSize}
-        fontWeight={fontWeight}
-        fill={fontColor}
-        textAnchor="middle"
-        dominantBaseline="central"
-      >
-        {counter}%
-      </text>
-    ) : null;
-  }
-);
+const CircleText = memo(() => {
+  let { number, counter, fontSize, fontWeight, fontColor } =
+    useContext(globalProps);
+  return number ? (
+    <text
+      x="50%"
+      y="50%"
+      fontSize={fontSize}
+      fontWeight={fontWeight}
+      fill={fontColor}
+      textAnchor="middle"
+      dominantBaseline="central"
+    >
+      {counter}%
+    </text>
+  ) : null;
+});
 
-const CircleWrapper = memo((props) => {
-  const { id, size } = props;
+const CircleWrapper = memo(() => {
+  let { id, size } = useContext(globalProps);
   return (
     <svg
       role="img"
@@ -141,15 +147,15 @@ const CircleWrapper = memo((props) => {
       viewBox="0 0 100 100"
       aria-labelledby="circular progress bar"
     >
-      <CircleText {...props} />
-      <CircleBackground {...props} />
-      <CircleTop {...props} />
+      <CircleText />
+      <CircleBackground />
+      <CircleTop />
     </svg>
   );
 });
 
 const CircularProgressBar = (props) => {
-  const { percent } = props;
+  const { percent, speed } = props;
 
   const [counter, setCounter] = useState(0);
   const ref = useRef();
@@ -162,24 +168,40 @@ const CircularProgressBar = (props) => {
 
     if (percent > 100 || percent < 0 || angle === percent) return;
 
+    const fps = speed || 60;
+    const interval = 1000 / fps;
+    const tolerance = 0.1;
+    let then = performance.now();
+
     let request;
-    const performAnimation = () => {
-      if (angle > percent) {
-        setCounter((count) => count - 1);
-      } else if (angle < percent) {
-        setCounter((count) => count + 1);
+    const animateLoop = (now) => {
+      request = requestAnimationFrame(animateLoop);
+      const delta = now - then;
+
+      if (delta >= interval - tolerance) {
+        then = now - (delta % interval);
+
+        if (angle > percent) {
+          setCounter((count) => count - 1);
+        } else if (angle < percent) {
+          setCounter((count) => count + 1);
+        }
       }
     };
 
-    request = requestAnimationFrame(performAnimation);
+    request = requestAnimationFrame(animateLoop);
 
     return () => cancelAnimationFrame(request);
-  }, [counter, show, percent]);
+  }, [counter, speed, show, percent]);
+
+  const value = { ...props, counter };
 
   return (
-    <div ref={ref} style={styleObj(props)} data-angel={counter}>
-      <CircleWrapper counter={counter} {...props} />
-    </div>
+    <globalProps.Provider value={value}>
+      <div ref={ref} style={styleObj(props)} data-angel={counter}>
+        <CircleWrapper />
+      </div>
+    </globalProps.Provider>
   );
 };
 
@@ -193,6 +215,7 @@ CircularProgressBar.propTypes = {
   opacity: PropTypes.number,
   number: PropTypes.bool,
   size: PropTypes.number,
+  speed: PropTypes.number,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.number,
   fontColor: PropTypes.string,

@@ -46,6 +46,7 @@ const props = {
   stroke: 10,
   strokeBottom: 5,
   opacity: 10,
+  speed: 60,
   round: true,
   number: true,
   linearGradient: ["#ffff00", "brown"]
@@ -97,6 +98,7 @@ colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brow
 stroke | number | `10` |  | Stroke width, chart thickness
 strokrBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
 round | boolean | `false` |  | Path rounding
+speed | number | `60` |  | Animation speed, 60fps by default
 opacity | number | `10` |  | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1
 number | boolean | `true` |  | Add props number and set to false to hide the number with percent
 size | number | `200` |  | Size progress bar width and height in px
