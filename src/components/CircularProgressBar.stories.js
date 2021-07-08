@@ -62,6 +62,11 @@ export default {
       description: 'Size progress bar width and height in px',
       table: { defaultValue: { summary: '200' } },
     },
+    speed: {
+      control: { type: 'range', min: 1, max: 1000, step: 10 },
+      description: 'Animation speed, 60fps by default',
+      table: { defaultValue: { summary: '60' } },
+    },
     fontSize: {
       description: 'Font size. The font can be shown in units rem, em, px ...',
       table: { defaultValue: { summary: '"1.6rem"' } },
@@ -106,6 +111,7 @@ Default.args = {
   round: false,
   number: true,
   size: 200,
+  speed: 60,
   fontSize: '1.6rem',
   fontWeight: 400,
   fontColor: '#365b74',
