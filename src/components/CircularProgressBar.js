@@ -17,6 +17,7 @@ const styleObj = ({ stroke, colorSlice, colorCircle, opacity, size }) => {
       ? `inset 0px 0px ${stroke}px ${stroke}px ${hex2rgb(colorSlice, opacity)}`
       : '';
   return {
+    position: 'relative',
     width: size,
     height: size,
     borderRadius: '50%',
@@ -73,6 +74,25 @@ const GradientLinear = ({ index }) => {
   );
 };
 
+const StyleCenter = memo(() => {
+  let { children } = useContext(globalProps);
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      {children ? children : null}
+    </div>
+  );
+});
+
 const CircleTop = memo(() => {
   let { id, linearGradient, counter, stroke, round, colorSlice } =
     useContext(globalProps);
@@ -119,7 +139,7 @@ const CircleBackground = memo(() => {
 });
 
 const CircleText = memo(() => {
-  let { number, counter, fontSize, fontWeight, fontColor } =
+  let { number, counter, textPosition, fontSize, fontWeight, fontColor } =
     useContext(globalProps);
   return number ? (
     <text
@@ -129,7 +149,7 @@ const CircleText = memo(() => {
       fontWeight={fontWeight}
       fill={fontColor}
       textAnchor="middle"
-      dominantBaseline="central"
+      dy={textPosition} // fixed issue with centering text vertical
     >
       {counter}%
     </text>
@@ -155,14 +175,20 @@ const CircleWrapper = memo(() => {
 });
 
 const CircularProgressBar = (props) => {
-  const { percent, speed } = props;
+  const { children, percent, speed, animationOff } = props;
 
-  const [counter, setCounter] = useState(0);
+  const [counter, setCounter] = useState(animationOff ? percent : 0);
   const ref = useRef();
   const show = useOnScreen(ref);
 
   useEffect(() => {
     if (!show) return;
+
+    // turn off the animation
+    if (animationOff) {
+      setCounter(percent);
+      return;
+    }
 
     let angle = Number(ref.current?.dataset?.angel);
 
@@ -192,13 +218,14 @@ const CircularProgressBar = (props) => {
     request = requestAnimationFrame(animateLoop);
 
     return () => cancelAnimationFrame(request);
-  }, [counter, speed, show, percent]);
+  }, [counter, animationOff, speed, show, percent]);
 
   const value = { ...props, counter };
 
   return (
     <globalProps.Provider value={value}>
       <div ref={ref} style={styleObj(props)} data-angel={counter}>
+        {children && <StyleCenter />}
         <CircleWrapper />
       </div>
     </globalProps.Provider>
@@ -216,6 +243,7 @@ CircularProgressBar.propTypes = {
   number: PropTypes.bool,
   size: PropTypes.number,
   speed: PropTypes.number,
+  textPosition: PropTypes.string,
   fontSize: PropTypes.string,
   fontWeight: PropTypes.number,
   fontColor: PropTypes.string,
@@ -229,6 +257,7 @@ CircularProgressBar.defaultProps = {
   stroke: 10,
   opacity: 10,
   size: 200,
+  textPosition: '.35em',
   fontSize: '1.6rem',
   fontColor: '#365b74',
   fontWeight: 400,
