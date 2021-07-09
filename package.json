@@ -1,6 +1,6 @@
 {
   "name": "@tomik23/react-circular-progress-bar",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -62,10 +62,8 @@
   },
   "homepage": "https://github.com/tomik23/react-circular-progress-bar",
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
-    "react-scripts": "4.0.3"
-  },
+    "react": ">=16.8.0"
+    },
   "dependencies": {
     "prop-types": "^15.7.2"
   },
