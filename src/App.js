@@ -70,6 +70,62 @@ const simple = [
   },
 ];
 
+const images = [
+  {
+    id: 6,
+    percent: 55,
+    colorSlice: '#CDDC39',
+    colorCircle: '#f1f1f1',
+    fontWeight: 100,
+    fontSize: '1rem',
+    textPosition: '1.5em',
+  },
+  {
+    id: 7,
+    percent: 75,
+    colorSlice: '#ffc107',
+    colorCircle: '#e6e6e6',
+    fontWeight: 100,
+    fontSize: '1rem',
+    textPosition: '1.5em',
+  },
+  {
+    id: 8,
+    percent: 85,
+    colorSlice: '#00bcd4',
+    colorCircle: '#e6e6e6',
+    fontWeight: 100,
+    fontSize: '1rem',
+    textPosition: '1.5em',
+  },
+];
+
+const imagesWithText = [
+  {
+    id: 6,
+    percent: 55,
+    colorSlice: '#CDDC39',
+    colorCircle: '#f1f1f1',
+    number: false,
+  },
+  {
+    id: 7,
+    percent: 75,
+    colorSlice: '#ffc107',
+    colorCircle: '#e6e6e6',
+    fontWeight: 100,
+    number: false,
+  },
+  {
+    id: 8,
+    percent: 85,
+    colorSlice: '#00bcd4',
+    colorCircle: '#e6e6e6',
+    fontWeight: 100,
+    number: false,
+  },
+];
+
 const withoutNumber = [
   {
     id: 9,
@@ -124,6 +180,46 @@ function App() {
       <section>
         {simple.map((props, index) => {
           return <CircularProgressBar key={index} {...props} />;
+        })}
+      </section>
+      <section>
+        {images.map((props, index) => {
+          return (
+            <CircularProgressBar key={index} {...props}>
+              <img
+                src="https://picsum.photos/100/100"
+                style={{
+                  width: '60px',
+                  borderRadius: '50%',
+                  marginTop: '-40px',
+                  padding: '2px',
+                  border: '3px solid salmon',
+                }}
+                alt="Random image"
+              />
+            </CircularProgressBar>
+          );
+        })}
+      </section>
+      <section>
+        {imagesWithText.map((props, index) => {
+          return (
+            <CircularProgressBar key={index} {...props}>
+              <img
+                src="https://picsum.photos/100/100"
+                style={{
+                  width: '60px',
+                  borderRadius: '50%',
+                  padding: '2px',
+                  border: '2px solid black',
+                }}
+                alt="Images with text"
+              />
+              <div style={{ textAlign: 'center', padding: '0 35px' }}>
+                Lorem, ipsum dolor.
+              </div>
+            </CircularProgressBar>
+          );
         })}
       </section>
       <section>

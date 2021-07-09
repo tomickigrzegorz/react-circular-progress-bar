@@ -63,7 +63,7 @@ export default {
       table: { defaultValue: { summary: '200' } },
     },
     speed: {
-      control: { type: 'range', min: 1, max: 1000, step: 10 },
+      control: { type: 'range', min: 10, max: 1000, step: 10 },
       description: 'Animation speed, 60fps by default',
       table: { defaultValue: { summary: '60' } },
     },
@@ -83,6 +83,10 @@ export default {
     },
     linearGradient: {
       description: 'Array of colors "lineargradient": "#ffff00", "brown", ...',
+    },
+    animationOff: {
+      description: 'Turning off the animation',
+      table: { defaultValue: { summary: 'false' } },
     },
   },
   decorators: [
@@ -115,6 +119,7 @@ Default.args = {
   fontSize: '1.6rem',
   fontWeight: 400,
   fontColor: '#365b74',
+  animationOff: true,
 };
 
 Default.argTypes = {
@@ -131,6 +136,7 @@ linearGradient.args = {
   fontColor: '#365b74',
   colorCircle: '#e6e6e6',
   linearGradient: ['yellow', '#ff0000'],
+  animationOff: false,
 };
 
 linearGradient.argTypes = {
@@ -163,4 +169,67 @@ WithoutNumber.args = {
 WithoutNumber.argTypes = {
   opacity: hideRecord,
   linearGradient: hideRecord,
+};
+
+const TemplateImage = (args) => (
+  <CircularProgressBar {...args}>
+    <img
+      src="https://picsum.photos/100/100"
+      style={{
+        width: '50px',
+        borderRadius: '50%',
+        marginTop: '-40px',
+        padding: '2px',
+        border: '3px solid #FF0000',
+      }}
+      alt="Random image"
+    />
+  </CircularProgressBar>
+);
+
+export const Image = TemplateImage.bind({});
+Image.args = {
+  percent: 67,
+  colorSlice: '#FF0000',
+  colorCircle: '#f1f1f1',
+  textPosition: '1.5em',
+  fontSize: '1rem',
+  animationOff: false,
+  fontWeight: 100,
+  fontWeight: 400,
+  stroke: 6,
+  speed: 100,
+  round: true,
+};
+
+const TemplateImageWithText = (args) => (
+  <CircularProgressBar {...args}>
+    <img
+      src="https://picsum.photos/100/100"
+      style={{
+        width: '50px',
+        borderRadius: '50%',
+        padding: '2px',
+        border: '3px solid #ff8c69',
+      }}
+      alt="Random image"
+    />
+    <div style={{ textAlign: 'center', fontSize: '1rem', padding: '0 40px' }}>
+      Lorem ipsum dolor sit.
+    </div>
+  </CircularProgressBar>
+);
+
+export const ImageWithYourText = TemplateImageWithText.bind({});
+ImageWithYourText.args = {
+  percent: 75,
+  colorSlice: '#ff8c69',
+  colorCircle: '#f1f1f1',
+  textPosition: '1.5em',
+  number: false,
+  animationOff: false,
+  round: true,
+  stroke: 5,
+  strokeBottom: 5,
+  speed: 1000,
 };
