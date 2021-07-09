@@ -156,17 +156,17 @@ props | type | default | require | description
 ---- | :-------: | :-------: | :--------: | -----------
 percent | number |  | ✔ | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%
 id | number | | | If you want to update a component, you need to add an `id` to each of them. Also when you want to display several components with different gradients - `linearGradient`
+animationOff | boolean | |  | Turn off the progress animation
 colorSlice | string | `'#00a1ff'` | | Progress layer color and background ["#ffff00","brown" *](#colors-names)
 colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brown" *](#colors-names)
 stroke | number | `10` |  | Stroke width, chart thickness
 strokrBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
 round | boolean | `false` |  | Path rounding
 speed | number | `60` |  | Animation speed, 60fps by default
-textPosition | string | `60` |  | The position of the SVG TEXT element vertically
 opacity | number | `10` |  | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1
 number | boolean | `true` |  | Add props number and set to false to hide the number with percent
 size | number | `200` |  | Size progress bar width and height in px
-animationOff | boolean | |  | Turn off the progress animation
+textPosition | string | `0.35em` |  | The position of the SVG TEXT element vertically
 fontSize | string | `1.6rem` |  | Font size. The font can be shown in units rem, em, px ...
 fontWeight | number | `400` |  | 400, 600, ...
 fontColor | string | `'#365b74'` |  | Font color ["#ffff00","brown" *](#colors-names)
