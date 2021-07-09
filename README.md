@@ -14,7 +14,7 @@ React library to help developers to draw animated, cross-browser, highly customi
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/circular-progress-bar.png">
+  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/circular-progress-bar.png">
 </p>
 
 ## Demo
@@ -87,6 +87,69 @@ function App() {
 }
 ```
 
+### Add photos and text
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/image-with-text.png">
+</p>
+
+```jsx
+const config = {
+  percent: 55,
+  colorSlice: '#E91E63',
+  colorCircle: '#f1f1f1',
+  fontWeight: 100,
+  number: false // turn off the percentage animation first
+}
+
+<CircularProgressBar key={index} {...props}>
+  <img
+    src="https://picsum.photos/100/100"
+    // 
+    style={{
+      width: '60px',
+      borderRadius: '50%',
+      padding: '2px',
+      border: '3px solid salmon',
+    }}
+    alt="Random image"
+  />
+  <div style={{ textAlign: 'center', padding: '0 35px' }}>
+    Lorem, ipsum dolor.
+  </div>
+</CircularProgressBar>
+```
+
+### Add photos and percent animation
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/image-with-procent.png">
+</p>
+
+```jsx
+const config = {
+  percent: 55,
+  colorSlice: '#CDDC39',
+  colorCircle: '#f1f1f1',
+  fontWeight: 100,
+  fontSize: '1rem',
+  textPosition: '1.5em', // needed element to move the percentage animation lower
+}
+
+<CircularProgressBar key={index} {...props}>
+  <img
+    src="https://picsum.photos/100/100"
+    // 
+    style={{
+      width: '60px',
+      borderRadius: '50%',
+      marginTop: '-40px',
+      padding: '2px',
+      border: '3px solid salmon',
+    }}
+    alt="Random image"
+  />
+</CircularProgressBar>
+```
+
 ## Configuration of the plugin
 
 props | type | default | require | description
@@ -99,9 +162,11 @@ stroke | number | `10` |  | Stroke width, chart thickness
 strokrBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
 round | boolean | `false` |  | Path rounding
 speed | number | `60` |  | Animation speed, 60fps by default
+textPosition | string | `60` |  | The position of the SVG TEXT element vertically
 opacity | number | `10` |  | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1
 number | boolean | `true` |  | Add props number and set to false to hide the number with percent
 size | number | `200` |  | Size progress bar width and height in px
+animationOff | boolean | |  | Turn off the progress animation
 fontSize | string | `1.6rem` |  | Font size. The font can be shown in units rem, em, px ...
 fontWeight | number | `400` |  | 400, 600, ...
 fontColor | string | `'#365b74'` |  | Font color ["#ffff00","brown" *](#colors-names)
