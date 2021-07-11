@@ -1,6 +1,6 @@
 import React from 'react';
 
-import CircularProgressBar from './CircularProgressBar';
+import CircularProgressBar from '../components/CircularProgressBar';
 
 const styleObj = {
   display: 'flex',
@@ -119,7 +119,7 @@ Default.args = {
   fontSize: '1.6rem',
   fontWeight: 400,
   fontColor: '#365b74',
-  animationOff: true,
+  animationOff: false,
 };
 
 Default.argTypes = {
@@ -229,7 +229,7 @@ ImageWithYourText.args = {
   number: false,
   animationOff: false,
   round: true,
-  stroke: 5,
-  strokeBottom: 5,
+  stroke: 6,
+  strokeBottom: 6,
   speed: 1000,
 };

@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-React library to help developers to draw animated, cross-browser, highly customizable progress circles using SVG and plain JavaScript.
+React library to help developers to draw animated, cross-browser, highly customizable progress circles using SVG.
 </p>
 
 <p align="center">
@@ -45,9 +45,11 @@ const props = {
   size: 200,
   stroke: 10,
   strokeBottom: 5,
+  seed: 60,
   opacity: 10,
-  speed: 60,
-  round: true,
+  textPosition: '0.35em',
+  animationOff: false,
+  round: false,
   number: true,
   linearGradient: ["#ffff00", "brown"]
 }
@@ -150,19 +152,23 @@ const config = {
 </CircularProgressBar>
 ```
 
+### How to turn off `%`?
+Turning off the percentage and leaving the number alone is very simple.
+Each percent (%) has a class of `circular-tspan-x` of course you must add for each circle` id`. If you don't do this, the class will always be `circular-tspan-0`. Just add `.circular-tspan-x {display: none}` to our styles. Digit animation remains but percent sign [%] disappears.
+
 ## Configuration of the plugin
 
 props | type | default | require | description
 ---- | :-------: | :-------: | :--------: | -----------
 percent | number |  | ✔ | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%
 id | number | | | If you want to update a component, you need to add an `id` to each of them. Also when you want to display several components with different gradients - `linearGradient`
-animationOff | boolean | |  | Turn off the progress animation
+speed | number | |  | Frame rate animation [fps]. Let's say you want the animation to be 60fps, just add the parameter `speed: 60`
+animationOff | boolean | `false` |  | Turn off the progress animation
 colorSlice | string | `'#00a1ff'` | | Progress layer color and background ["#ffff00","brown" *](#colors-names)
 colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brown" *](#colors-names)
 stroke | number | `10` |  | Stroke width, chart thickness
-strokrBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
+strokeBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
 round | boolean | `false` |  | Path rounding
-speed | number | `60` |  | Animation speed, 60fps by default
 opacity | number | `10` |  | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1
 number | boolean | `true` |  | Add props number and set to false to hide the number with percent
 size | number | `200` |  | Size progress bar width and height in px
