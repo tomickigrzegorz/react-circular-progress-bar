@@ -7,7 +7,7 @@ React library to help developers to draw animated, cross-browser, highly customi
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/package-json/v/tomik23/react-circular-progress-bar">
+  <img src="https://badge.fury.io/js/%40tomik23%2Freact-circular-progress-bar.svg">
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green.svg">
   </a>
