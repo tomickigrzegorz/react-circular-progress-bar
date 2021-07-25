@@ -88,6 +88,10 @@ export default {
       description: 'Turning off the animation',
       table: { defaultValue: { summary: 'false' } },
     },
+    inverse: {
+      description: 'Counterclockwise animation',
+      table: { defaultValue: { summary: 'false' } },
+    },
   },
   decorators: [
     (Story) => (
@@ -116,6 +120,7 @@ Default.args = {
   number: true,
   size: 200,
   speed: 60,
+  inverse: false,
   fontSize: '1.6rem',
   fontWeight: 400,
   fontColor: '#365b74',
@@ -232,4 +237,15 @@ ImageWithYourText.args = {
   stroke: 6,
   strokeBottom: 6,
   speed: 1000,
+};
+
+export const Inverse = Template.bind({});
+Inverse.args = {
+  inverse: true,
+  percent: 75,
+};
+
+Inverse.argTypes = {
+  opacity: hideRecord,
+  linearGradient: hideRecord,
 };
