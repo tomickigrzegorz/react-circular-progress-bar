@@ -1,7 +1,7 @@
-import React, { memo, useContext } from 'react';
+import React, { useContext } from 'react';
 import { PropsContext } from './Provider';
 
-const StyleCenter = memo(() => {
+const StyleCenter = () => {
   let { children } = useContext(PropsContext);
   return (
     <div
@@ -18,6 +18,6 @@ const StyleCenter = memo(() => {
       {children ? children : null}
     </div>
   );
-});
+};
 
 export default StyleCenter;

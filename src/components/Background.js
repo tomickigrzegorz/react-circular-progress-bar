@@ -1,7 +1,7 @@
-import React, { memo, useContext } from 'react';
+import React, { useContext } from 'react';
 import { PropsContext } from './Provider';
 
-const Background = memo(() => {
+const Background = () => {
   let { stroke, strokeBottom, colorCircle } = useContext(PropsContext);
   return (
     <circle
@@ -14,6 +14,6 @@ const Background = memo(() => {
       strokeWidth={strokeBottom || stroke}
     />
   );
-});
+};
 
 export default Background;
