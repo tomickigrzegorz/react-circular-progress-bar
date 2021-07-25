@@ -16,6 +16,7 @@ const defaults = [
     id: 2,
     percent: 70,
     colorSlice: '#00bcd4',
+    animationOff: true,
   },
 ];
 
@@ -50,6 +51,7 @@ const simple = [
     colorSlice: '#CDDC39',
     colorCircle: '#f1f1f1',
     fontWeight: 100,
+    inverse: true,
   },
   {
     id: 7,
@@ -144,6 +146,7 @@ const withoutNumber = [
     colorSlice: '#00bcd4',
     colorCircle: '#e6e6e6',
     number: false,
+    animationOff: true,
   },
 ];
 
