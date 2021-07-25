@@ -1,7 +1,7 @@
-import React, { memo, useContext } from 'react';
+import React, { useContext } from 'react';
 import { PropsContext } from './Provider';
 
-const Wrapper = memo(({ children }) => {
+const Wrapper = ({ children }) => {
   let { id, size } = useContext(PropsContext);
   return (
     <svg
@@ -15,6 +15,6 @@ const Wrapper = memo(({ children }) => {
       {children}
     </svg>
   );
-});
+};
 
 export default Wrapper;

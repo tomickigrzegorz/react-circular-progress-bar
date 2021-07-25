@@ -1,7 +1,7 @@
-import React, { memo, useContext } from 'react';
+import React, { useContext } from 'react';
 import { PropsContext } from './Provider';
 
-const Text = memo(() => {
+const Text = () => {
   let { id, number, counter, textPosition, fontSize, fontWeight, fontColor } =
     useContext(PropsContext);
 
@@ -19,6 +19,6 @@ const Text = memo(() => {
       <tspan className={`circular-tspan-${id || 0}`}>%</tspan>
     </text>
   ) : null;
-});
+};
 
 export default Text;
