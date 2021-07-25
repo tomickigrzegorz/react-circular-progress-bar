@@ -174,6 +174,7 @@ colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brow
 stroke | number | `10` |  | Stroke width, chart thickness
 strokeBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
 round | boolean | `false` |  | Path rounding
+invers | boolean | `false` |  | Counterclockwise animation
 opacity | number | `10` |  | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1
 number | boolean | `true` |  | Add props number and set to false to hide the number with percent
 size | number | `200` |  | Size progress bar width and height in px
