@@ -1,19 +1,30 @@
-import React, { useContext } from 'react';
-import { PropsContext } from './Provider';
+import React, { useContext } from "react";
+import { PropsContext } from "./Provider";
 
-import GradientLinear from './GradientLinear';
+import GradientLinear from "./GradientLinear";
 
 const Top = () => {
-  let { id, linearGradient, inverse, counter, stroke, round, colorSlice } =
-    useContext(PropsContext);
+  let {
+    id,
+    rotation,
+    linearGradient,
+    inverse,
+    counter,
+    stroke,
+    round,
+    cut,
+    colorSlice
+  } = useContext(PropsContext);
 
   const gradient =
     linearGradient !== undefined
       ? `url(#linear-gradient-${id || 0})`
       : colorSlice;
 
-  const getDashOffset = (counter, inverse) => {
-    const angle = 264 - (counter / 100) * 264;
+  const getDashOffset = (counter, cut, inverse) => {
+    const cutChar = cut ? (264 / 100) * (100 - cut) : 264;
+    const angle = 264 - (counter / 100) * cutChar;
+
     return inverse ? -angle : angle;
   };
 
@@ -29,13 +40,13 @@ const Top = () => {
         shapeRendering="geometricPrecision"
         fill="none"
         style={{
-          transform: 'rotate(-90deg)',
-          transformOrigin: '50% 50%',
+          transform: `rotate(${rotation}deg)`,
+          transformOrigin: "50% 50%"
         }}
         stroke={gradient}
         strokeWidth={stroke}
-        strokeLinecap={round ? 'round' : 'butt'}
-        strokeDashoffset={getDashOffset(counter, inverse)}
+        strokeLinecap={round ? "round" : "butt"}
+        strokeDashoffset={getDashOffset(counter, cut, inverse)}
         strokeDasharray={264}
       />
     </>

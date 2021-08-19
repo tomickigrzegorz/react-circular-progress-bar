@@ -1,17 +1,17 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from "react";
 
-import { PropsContext } from './Provider';
+import { PropsContext } from "./Provider";
 
-import Text from './Text';
-import Background from './Background';
-import Wrapper from './Wrapper';
-import Top from './Top';
+import Text from "./Text";
+import Background from "./Background";
+import Wrapper from "./Wrapper";
+import Top from "./Top";
 
-import StyleCenter from './StyleCenter';
+import StyleCenter from "./StyleCenter";
 
-import { CircleType, CircleDefaultProps } from '../types';
+import { CircleType, CircleDefaultProps } from "../types";
 
-import { styleObj, useOnScreen } from '../utils';
+import { styleObj, useOnScreen } from "../utils";
 
 const CircularProgressBar = (props) => {
   const { children, percent, speed, animationOff } = props;

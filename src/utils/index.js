@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const useOnScreen = (ref) => {
   const [isIntersecting, setIntersecting] = useState(false);
@@ -6,8 +6,8 @@ const useOnScreen = (ref) => {
   useEffect(() => {
     const config = {
       root: null,
-      rootMargin: '0px',
-      threshold: 0.5,
+      rootMargin: "0px",
+      threshold: 0.5
     };
 
     const observer = new IntersectionObserver(([entry]) => {
@@ -27,7 +27,7 @@ const useOnScreen = (ref) => {
 };
 
 const hex2rgb = (hex, opacity = 10) => {
-  const c = typeof hex === 'string' ? parseInt(hex.replace('#', ''), 16) : hex;
+  const c = typeof hex === "string" ? parseInt(hex.replace("#", ""), 16) : hex;
   return `rgba(${c >> 16},
     ${(c & 0xff00) >> 8}, 
     ${c & 0xff}, 
@@ -38,13 +38,13 @@ const styleObj = ({ stroke, colorSlice, colorCircle, opacity, size }) => {
   const boxShadow =
     colorCircle === undefined
       ? `inset 0px 0px ${stroke}px ${stroke}px ${hex2rgb(colorSlice, opacity)}`
-      : '';
+      : "";
   return {
-    position: 'relative',
+    position: "relative",
     width: size,
     height: size,
-    borderRadius: '50%',
-    boxShadow,
+    borderRadius: "50%",
+    boxShadow
   };
 };
 
