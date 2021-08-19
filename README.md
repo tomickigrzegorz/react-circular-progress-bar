@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-React library to help developers to draw animated, cross-browser, highly customizable progress circles using SVG.
+React library to help developers to draw animated, cross-browser, highly customizable progress circles using SVG. IntersectionObserver support, the animation starts when the individual chart appears in the view.
 </p>
 
 <p align="center">
@@ -23,6 +23,7 @@ React library to help developers to draw animated, cross-browser, highly customi
 </p>
 
 ## Demo
+
 See the demo - [example](https://tomik23.github.io/react-circular-progress-bar/)
 
 ## Install
@@ -34,42 +35,48 @@ npm install @tomik23/react-circular-progress-bar
 ```
 
 ## Usage
+
 ```jsx
-import { CircularProgressBar } from '@tomik23/react-circular-progress-bar'
+import { CircularProgressBar } from "@tomik23/react-circular-progress-bar";
 ```
 
 ```jsx
 // available control variables
 const props = {
   percent: 60, // is require
-  colorSlice: '#00a1ff',
-  colorCircle: '#00a1ff',
-  fontColor: '#365b74',
-  fontSize: '1.6rem',
+  colorSlice: "#00a1ff",
+  colorCircle: "#00a1ff",
+  fontColor: "#365b74",
+  fontSize: "1.6rem",
   fontWeight: 400,
   size: 200,
   stroke: 10,
   strokeBottom: 5,
-  seed: 60,
+  speed: 60,
+  cut: 0,
+  rotation: -90,
   opacity: 10,
-  textPosition: '0.35em',
+  textPosition: "0.35em",
   animationOff: false,
   inverse: false,
   round: false,
   number: true,
   linearGradient: ["#ffff00", "brown"]
-}
+};
 
 <CircularProgressBar {...props} />
 ```
+
 ### Update percent
+
 > If you want to update component you have to add `id` to each of them
+
 ```jsx
 const config = {
   id: 0, // important
   percent: 50,
-  colorSlice: '#E91E63',
-}
+  colorSlice: "#E91E63"
+};
 
 function App() {
   const [update, setUpdate] = useState(config);
@@ -79,7 +86,7 @@ function App() {
       setUpdate({
         ...config,
         id: 0, // we indicate which component we want to change
-        percent: Math.floor(Math.random() * 100 + 1),
+        percent: Math.floor(Math.random() * 100 + 1)
       });
     }, 3000);
     return () => clearInterval(interval);
@@ -96,6 +103,7 @@ function App() {
 ```
 
 ### Add photos and text
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/image-with-text.png">
 </p>
@@ -103,31 +111,31 @@ function App() {
 ```jsx
 const config = {
   percent: 55,
-  colorSlice: '#E91E63',
-  colorCircle: '#f1f1f1',
+  colorSlice: "#E91E63",
+  colorCircle: "#f1f1f1",
   fontWeight: 100,
   number: false // turn off the percentage animation first
-}
+};
 
 <CircularProgressBar key={index} {...props}>
   <img
     src="https://picsum.photos/100/100"
-    // 
     style={{
-      width: '60px',
-      borderRadius: '50%',
-      padding: '2px',
-      border: '3px solid salmon',
+      width: "60px",
+      borderRadius: "50%",
+      padding: "2px",
+      border: "3px solid salmon"
     }}
     alt="Random image"
   />
-  <div style={{ textAlign: 'center', padding: '0 35px' }}>
+  <div style={{ textAlign: "center", padding: "0 35px" }}>
     Lorem, ipsum dolor.
   </div>
 </CircularProgressBar>
 ```
 
 ### Add photos and percent animation
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/image-with-procent.png">
 </p>
@@ -135,23 +143,22 @@ const config = {
 ```jsx
 const config = {
   percent: 55,
-  colorSlice: '#CDDC39',
-  colorCircle: '#f1f1f1',
+  colorSlice: "#CDDC39",
+  colorCircle: "#f1f1f1",
   fontWeight: 100,
-  fontSize: '1rem',
-  textPosition: '1.5em', // needed element to move the percentage animation lower
-}
+  fontSize: "1rem",
+  textPosition: "1.5em" // needed element to move the percentage animation lower
+};
 
 <CircularProgressBar key={index} {...props}>
   <img
     src="https://picsum.photos/100/100"
-    // 
     style={{
-      width: '60px',
-      borderRadius: '50%',
-      marginTop: '-40px',
-      padding: '2px',
-      border: '3px solid salmon',
+      width: "60px",
+      borderRadius: "50%",
+      marginTop: "-40px",
+      padding: "2px",
+      border: "3px solid salmon"
     }}
     alt="Random image"
   />
@@ -159,38 +166,41 @@ const config = {
 ```
 
 ### How to turn off `%`?
+
 Turning off the percentage and leaving the number alone is very simple.
 Each percent (%) has a class of `circular-tspan-x` of course you must add for each circle` id`. If you don't do this, the class will always be `circular-tspan-0`. Just add `.circular-tspan-x {display: none}` to our styles. Digit animation remains but percent sign [%] disappears.
 
 ## Configuration of the plugin
 
-props | type | default | require | description
----- | :-------: | :-------: | :--------: | -----------
-percent | number |  | ✔ | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%
-id | number | | | If you want to update a component, you need to add an `id` to each of them. Also when you want to display several components with different gradients - `linearGradient`
-speed | number | |  | Frame rate animation [fps]. Let's say you want the animation to be 60fps, just add the parameter `speed: 60`
-animationOff | boolean | `false` |  | Turn off the progress animation
-colorSlice | string | `'#00a1ff'` | | Progress layer color and background ["#ffff00","brown" *](#colors-names)
-colorCircle | string | `'#00a1ff'` | | Bottom circle color Font ["#ffff00","brown" *](#colors-names)
-stroke | number | `10` |  | Stroke width, chart thickness
-strokeBottom | number | `10` |  | If "strokBottom" is set, it is used to generate a background circle size
-round | boolean | `false` |  | Path rounding
-inverse | boolean | `false` |  | Counterclockwise animation
-opacity | number | `10` |  | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1
-number | boolean | `true` |  | Add props number and set to false to hide the number with percent
-size | number | `200` |  | Size progress bar width and height in px
-textPosition | string | `0.35em` |  | The position of the SVG TEXT element vertically
-fontSize | string | `1.6rem` |  | Font size. The font can be shown in units rem, em, px ...
-fontWeight | number | `400` |  | 400, 600, ...
-fontColor | string | `'#365b74'` |  | Font color ["#ffff00","brown" *](#colors-names)
-linearGradient | array |  |  | Array of colors "lineargradient": ["#ffff00","brown" *](#colors-names)
+| props          |  type   |   default   | require | description                                                                                                                                                              |
+| -------------- | :-----: | :---------: | :-----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| percent        | number  |             |    ✔    | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%                                                                       |
+| id             | number  |             |         | If you want to update a component, you need to add an `id` to each of them. Also when you want to display several components with different gradients - `linearGradient` |
+| speed          | number  |             |         | Frame rate animation [fps]. Let's say you want the animation to be 60fps, just add the parameter `speed: 60`                                                             |
+| animationOff   | boolean |   `false`   |         | Turn off the progress animation                                                                                                                                          |
+| colorSlice     | string  | `'#00a1ff'` |         | Progress layer color and background ["#ffff00","brown" \*](#colors-names)                                                                                                |
+| colorCircle    | string  | `'#00a1ff'` |         | Bottom circle color Font ["#ffff00","brown" \*](#colors-names)                                                                                                           |
+| stroke         | number  |    `10`     |         | Stroke width, chart thickness                                                                                                                                            |
+| strokeBottom   | number  |    `10`     |         | If "strokBottom" is set, it is used to generate a background circle size                                                                                                 |
+| round          | boolean |   `false`   |         | Path rounding                                                                                                                                                            |
+| inverse        | boolean |   `false`   |         | Counterclockwise animation                                                                                                                                               |
+| opacity        | number  |    `10`     |         | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1                                                                                                                          |
+| rotation       | number  |    `-90`    |         | Chart rotation                                                                                                                                                           |
+| number         | boolean |   `true`    |         | Add props number and set to false to hide the number with percent                                                                                                        |
+| size           | number  |    `200`    |         | Size progress bar width and height in px                                                                                                                                 |
+| cut            | number  |     `0`     |         | Angle of the circle sector                                                                                                                                               |
+| textPosition   | string  |  `0.35em`   |         | The position of the SVG TEXT element vertically                                                                                                                          |
+| fontSize       | string  |  `1.6rem`   |         | Font size. The font can be shown in units rem, em, px ...                                                                                                                |
+| fontWeight     | number  |    `400`    |         | 400, 600, ...                                                                                                                                                            |
+| fontColor      | string  | `'#365b74'` |         | Font color ["#ffff00","brown" \*](#colors-names)                                                                                                                         |
+| linearGradient |  array  |             |         | Array of colors "lineargradient": ["#ffff00","brown" \*](#colors-names)                                                                                                  |
 
 ## Colors names
 
-[* See colors names](https://htmlcolorcodes.com/color-names/)
+[\* See colors names](https://htmlcolorcodes.com/color-names/)
 
 ## Browsers support
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/vivaldi/vivaldi_48x48.png" alt="Vivaldi" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Vivaldi |
-| --------- | --------- | --------- | --------- | --------- |
-| IE11+, Edge| last 2 versions| last 2 versions| last 2 versions| last 2 versions
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| IE11+, Edge                                                                                                                                                                                                     | last 2 versions                                                                                                                                                                                                   | last 2 versions                                                                                                                                                                                               | last 2 versions                                                                                                                                                                                           | last 2 versions                                                                                                                                                                                                   |
