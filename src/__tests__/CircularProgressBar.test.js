@@ -1,10 +1,10 @@
-import React from 'react';
-import { render, screen, cleanup, waitFor } from '@testing-library/react';
+import React from "react";
+import { render, screen, cleanup, waitFor } from "@testing-library/react";
 
-import 'intersection-observer';
-import CircularProgressBar from '../components/CircularProgressBar';
+import "intersection-observer";
+import CircularProgressBar from "../components/CircularProgressBar";
 
-describe('CircularProgressBar', function () {
+describe("CircularProgressBar", function () {
   afterAll(() => cleanup);
 
   test('checking if it exists `data-angel="20"`', async () => {
@@ -15,10 +15,10 @@ describe('CircularProgressBar', function () {
     });
   });
 
-  test('checking if it exists gradient', () => {
+  test("checking if it exists gradient", () => {
     const props = {
       percent: 60,
-      linearGradient: ['#ff0000', '#9c27b0'],
+      linearGradient: ["#ff0000", "#9c27b0"]
     };
 
     const { container } = render(<CircularProgressBar {...props} />);
@@ -28,10 +28,10 @@ describe('CircularProgressBar', function () {
     });
   });
 
-  test('checking if it exists `animationOff`', async () => {
+  test("checking if it exists `animationOff`", async () => {
     const props = {
       percent: 80,
-      animationOff: true,
+      animationOff: true
     };
 
     const { rerender, container } = render(
@@ -47,28 +47,28 @@ describe('CircularProgressBar', function () {
     });
   });
 
-  test('checking if it exists image in center of circle', () => {
+  test("checking if it exists image in center of circle", () => {
     const { container } = render(
       <CircularProgressBar percent={60}>
         <img
           src="https://picsum.photos/100/100"
           style={{
-            width: '60px',
-            borderRadius: '50%',
-            marginTop: '-40px',
-            padding: '2px',
-            border: '3px solid salmon',
+            width: "60px",
+            borderRadius: "50%",
+            marginTop: "-40px",
+            padding: "2px",
+            border: "3px solid salmon"
           }}
           alt="Random"
         />
       </CircularProgressBar>
     );
 
-    const image = container.querySelector('div > img');
+    const image = container.querySelector("div > img");
     expect(image).toBeTruthy();
   });
 
-  test('checking if it the percentage change works', async () => {
+  test("checking if it the percentage change works", async () => {
     const { rerender, container } = render(
       <CircularProgressBar percent={60} />
     );
@@ -90,22 +90,22 @@ describe('CircularProgressBar', function () {
     );
   });
 
-  test('checking if it exists `<text ...` svg element', () => {
+  test("checking if it exists `<text ...` svg element", () => {
     const props = {
       percent: 20,
-      number: false,
+      number: false
     };
 
     const { container } = render(<CircularProgressBar {...props} />);
 
-    const text = container.querySelector('text');
+    const text = container.querySelector("text");
     expect(text).toBeFalsy();
   });
 
   test('checking if it exists `stroke-linecap="round"`', () => {
     const props = {
       percent: 60,
-      round: true,
+      round: true
     };
 
     render(<CircularProgressBar {...props} />);
@@ -115,7 +115,7 @@ describe('CircularProgressBar', function () {
 
   test('checking if it `stroke="#CDDC39"`', () => {
     const { container } = render(
-      <CircularProgressBar colorCircle={'red'} percent={60} />
+      <CircularProgressBar colorCircle={"red"} percent={60} />
     );
 
     expect(container.querySelector(`[stroke="#CDDC39"]`)).toBeFalsy();

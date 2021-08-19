@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const { bool, number, string, array } = PropTypes;
 
@@ -17,21 +17,23 @@ const CircleType = {
   fontSize: string,
   fontWeight: number,
   fontColor: string,
-  linearGradient: array,
+  linearGradient: array
 };
 
 const CircleDefaultProps = {
-  colorSlice: '#00a1ff',
+  colorSlice: "#00a1ff",
   round: false,
   number: true,
   stroke: 10,
   opacity: 10,
   size: 200,
   speed: 1000,
-  textPosition: '.35em',
-  fontSize: '1.6rem',
-  fontColor: '#365b74',
-  fontWeight: 400,
+  cut: 0,
+  rotation: -90,
+  textPosition: ".35em",
+  fontSize: "1.6rem",
+  fontColor: "#365b74",
+  fontWeight: 400
 };
 
 export { CircleType, CircleDefaultProps };

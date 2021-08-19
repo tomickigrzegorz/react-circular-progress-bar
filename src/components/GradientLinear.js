@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { PropsContext } from './Provider';
+import React, { useContext } from "react";
+import { PropsContext } from "./Provider";
 
 const GradientLinear = ({ index }) => {
   let { linearGradient } = useContext(PropsContext);
@@ -14,9 +14,8 @@ const GradientLinear = ({ index }) => {
           return (
             <stop
               key={index}
-              offset={number / (linearGradient.length - 1) + '%'}
-              stopColor={gradient}
-            ></stop>
+              offset={number / (linearGradient.length - 1) + "%"}
+              stopColor={gradient}></stop>
           );
         })}
       </linearGradient>

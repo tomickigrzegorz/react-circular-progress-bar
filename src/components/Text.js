@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
-import { PropsContext } from './Provider';
+import React, { useContext } from "react";
+import { PropsContext } from "./Provider";
 
 const Text = () => {
   let { id, number, counter, textPosition, fontSize, fontWeight, fontColor } =
