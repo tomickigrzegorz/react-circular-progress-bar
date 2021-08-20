@@ -1,6 +1,6 @@
 {
   "name": "@tomik23/react-circular-progress-bar",
-  "version": "0.1.20",
+  "version": "0.1.21",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
