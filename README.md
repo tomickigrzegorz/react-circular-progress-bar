@@ -56,6 +56,8 @@ const props = {
   cut: 0,
   rotation: -90,
   opacity: 10,
+  fill: "#00897B",
+  unit: "%",
   textPosition: "0.35em",
   animationOff: false,
   inverse: false,
@@ -172,28 +174,30 @@ Each percent (%) has a class of `circular-tspan-x` of course you must add for ea
 
 ## Configuration of the plugin
 
-| props          |  type   |   default   | require | description                                                                                                                                                              |
-| -------------- | :-----: | :---------: | :-----: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| percent        | number  |             |    ✔    | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65%                                                                       |
+| props          |  type   |   default   | require | description |
+| -------------- | :-----: | :---------: | :-----: | --- |
+| percent        | number  |             |    ✔    | Represents the progress bar and animation of the animation progress expressed by a number e.g. 65% |
 | id             | number  |             |         | If you want to update a component, you need to add an `id` to each of them. Also when you want to display several components with different gradients - `linearGradient` |
-| speed          | number  |             |         | Frame rate animation [fps]. Let's say you want the animation to be 60fps, just add the parameter `speed: 60`                                                             |
-| animationOff   | boolean |   `false`   |         | Turn off the progress animation                                                                                                                                          |
-| colorSlice     | string  | `'#00a1ff'` |         | Progress layer color and background ["#ffff00","brown" \*](#colors-names)                                                                                                |
-| colorCircle    | string  | `'#00a1ff'` |         | Bottom circle color Font ["#ffff00","brown" \*](#colors-names)                                                                                                           |
-| stroke         | number  |    `10`     |         | Stroke width, chart thickness                                                                                                                                            |
-| strokeBottom   | number  |    `10`     |         | If "strokBottom" is set, it is used to generate a background circle size                                                                                                 |
-| round          | boolean |   `false`   |         | Path rounding                                                                                                                                                            |
-| inverse        | boolean |   `false`   |         | Counterclockwise animation                                                                                                                                               |
-| opacity        | number  |    `10`     |         | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1                                                                                                                          |
-| rotation       | number  |    `-90`    |         | Chart rotation                                                                                                                                                           |
-| number         | boolean |   `true`    |         | Add props number and set to false to hide the number with percent                                                                                                        |
-| size           | number  |    `200`    |         | Size progress bar width and height in px                                                                                                                                 |
-| cut            | number  |     `0`     |         | Angle of the circle sector                                                                                                                                               |
-| textPosition   | string  |  `0.35em`   |         | The position of the SVG TEXT element vertically                                                                                                                          |
-| fontSize       | string  |  `1.6rem`   |         | Font size. The font can be shown in units rem, em, px ...                                                                                                                |
-| fontWeight     | number  |    `400`    |         | 400, 600, ...                                                                                                                                                            |
-| fontColor      | string  | `'#365b74'` |         | Font color ["#ffff00","brown" \*](#colors-names)                                                                                                                         |
-| linearGradient |  array  |             |         | Array of colors "lineargradient": ["#ffff00","brown" \*](#colors-names)                                                                                                  |
+| speed          | number  |             |         | Frame rate animation [fps]. Let's say you want the animation to be 60fps, just add the parameter `speed: 60` |
+| animationOff   | boolean |   `false`   |         | Turn off the progress animation |
+| colorSlice     | string  | `'#00a1ff'` |         | Progress layer color and background ["#ffff00","brown" \*](#colors-names) |
+| colorCircle    | string  | `'#00a1ff'` |         | Bottom circle color Font ["#ffff00","brown" \*](#colors-names) |
+| stroke         | number  |    `10`     |         | Stroke width, chart thickness |
+| strokeBottom   | number  |    `10`     |         | If "strokBottom" is set, it is used to generate a background circle size |
+| round          | boolean |   `false`   |         | Path rounding |
+| inverse        | boolean |   `false`   |         | Counterclockwise animation |
+| opacity        | number  |    `10`     |         | Opacity box-shadow, 10 = 1, 9 = 0.9 ... 1 = 0.1 |
+| rotation       | number  |    `-90`    |         | Chart rotation |
+| number         | boolean |   `true`    |         | Add props number and set to false to hide the number with percent |
+| size           | number  |    `200`    |         | Size progress bar width and height in px |
+| cut            | number  |     `0`     |         | Angle of the circle sector |
+| unit           | string  |     `%`     |         | Different unit instead of percentage (%) inside the circle |
+| fill           | string  |   `none`    |         | Inner circle color |
+| textPosition   | string  |  `0.35em`   |         | The position of the SVG TEXT element vertically |
+| fontSize       | string  |  `1.6rem`   |         | Font size. The font can be shown in units rem, em, px ... |
+| fontWeight     | number  |    `400`    |         | 400, 600, ... |
+| fontColor      | string  | `'#365b74'` |         | Font color ["#ffff00","brown" \*](#colors-names) |
+| linearGradient |  array  |             |         | Array of colors "lineargradient": ["#ffff00","brown" \*](#colors-names) |
 
 ## Colors names
 
@@ -202,5 +206,5 @@ Each percent (%) has a class of `circular-tspan-x` of course you must add for ea
 ## Browsers support
 
 | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png" alt="IE / Edge" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>IE / Edge | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/vivaldi/vivaldi_48x48.png" alt="Vivaldi" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Vivaldi |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| IE11+, Edge                                                                                                                                                                                                     | last 2 versions                                                                                                                                                                                                   | last 2 versions                                                                                                                                                                                               | last 2 versions                                                                                                                                                                                           | last 2 versions                                                                                                                                                                                                   |
+| :---------: | :-------------: | :-------------: | :-------------: | :-------------: |
+| IE11+, Edge | last 2 versions | last 2 versions | last 2 versions | last 2 versions |
