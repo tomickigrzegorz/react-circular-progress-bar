@@ -41,3 +41,21 @@ section:after {
 section:nth-child(even) {
   background: #f8f8f8;
 }
+
+.circular-tspan-15 {
+  fill: #f50057;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.circular-tspan-16 {
+  fill: #d500f9;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.circular-tspan-17 {
+  fill: #1b5e20;
+  font-size: 0.8rem;
+  font-weight: 700;
+}

@@ -130,12 +130,13 @@ Default.args = {
   number: true,
   size: 200,
   speed: 1000,
-  rotate: -90,
+  rotation: -90,
   cut: 0,
   inverse: false,
   fontSize: "1.6rem",
   fontWeight: 400,
   fontColor: "#365b74",
+  fill: "none",
   animationOff: false
 };
 

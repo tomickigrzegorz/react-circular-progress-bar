@@ -2,8 +2,16 @@ import React, { useContext } from "react";
 import { PropsContext } from "./Provider";
 
 const Text = () => {
-  let { id, number, counter, textPosition, fontSize, fontWeight, fontColor } =
-    useContext(PropsContext);
+  let {
+    id,
+    unit,
+    number,
+    counter,
+    textPosition,
+    fontSize,
+    fontWeight,
+    fontColor
+  } = useContext(PropsContext);
 
   return number ? (
     <text
@@ -16,7 +24,7 @@ const Text = () => {
       dy={textPosition} // fixed issue with centering text vertical
     >
       {counter}
-      <tspan className={`circular-tspan-${id || 0}`}>%</tspan>
+      <tspan className={`circular-tspan-${id || 0}`}>{unit}</tspan>
     </text>
   ) : null;
 };
