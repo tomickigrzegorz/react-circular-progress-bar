@@ -29,6 +29,16 @@ export default {
         'Progress layer color and background "#ffff00", "brown", ...',
       table: { defaultValue: { summary: '"#00a1ff"' } }
     },
+    fill: {
+      control: "color",
+      description: "Inner circle color",
+      table: { defaultValue: { summary: "none" } }
+    },
+    unit: {
+      control: "text",
+      description: "Different unit instead of percentage (%) inside the circle",
+      table: { defaultValue: { summary: "%" } }
+    },
     colorCircle: {
       control: "color",
       description: 'Bottom circle color Font "#ffff00", "brown", ...',
@@ -132,6 +142,7 @@ Default.args = {
   speed: 1000,
   rotation: -90,
   cut: 0,
+  fill: "none",
   inverse: false,
   fontSize: "1.6rem",
   fontWeight: 400,
@@ -265,4 +276,28 @@ Cut.args = {
   colorCircle: "#f1f1f1",
   textPosition: "0.8em",
   fontSize: "1.1rem"
+};
+
+export const Fill = Template.bind({});
+Fill.args = {
+  fill: "#FFEBEE",
+  percent: 60,
+  stroke: 6,
+  strokeBottom: 10,
+  colorSlice: "#FF1744",
+  colorCircle: "#FFEBEE",
+  round: true
+};
+
+export const Unit = Template.bind({});
+Unit.args = {
+  id: 20,
+  unit: "PL",
+  percent: 75,
+  stroke: 4,
+  strokeBottom: 10,
+  colorSlice: "#fff",
+  colorCircle: "#F50057",
+  fontSize: "1.2em",
+  round: true
 };
