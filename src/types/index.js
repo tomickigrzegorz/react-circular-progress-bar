@@ -13,8 +13,12 @@ const CircleType = {
   number: bool,
   size: number,
   speed: number,
+  cut: number,
+  rotation: number,
+  unit: string,
   textPosition: string,
   fontSize: string,
+  fill: string,
   fontWeight: number,
   fontColor: string,
   linearGradient: array
@@ -30,9 +34,11 @@ const CircleDefaultProps = {
   speed: 1000,
   cut: 0,
   rotation: -90,
+  unit: "%",
   textPosition: ".35em",
   fontSize: "1.6rem",
   fontColor: "#365b74",
+  fill: "none",
   fontWeight: 400
 };
 

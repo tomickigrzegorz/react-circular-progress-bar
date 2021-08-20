@@ -67,9 +67,9 @@ const CircularProgressBar = (props) => {
       <PropsContext.Provider value={value}>
         {children && <StyleCenter />}
         <Wrapper>
-          <Text />
           <Background />
           <Top />
+          <Text />
         </Wrapper>
       </PropsContext.Provider>
     </div>

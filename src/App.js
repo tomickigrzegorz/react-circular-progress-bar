@@ -97,9 +97,78 @@ const rotation = [
   }
 ];
 
-const cut = [
+const fill = [
   {
     id: 12,
+    percent: 60,
+    stroke: 6,
+    strokeBottom: 10,
+    colorSlice: "#FF1744",
+    colorCircle: "#FFEBEE",
+    fill: "#FFEBEE",
+    round: true
+  },
+  {
+    id: 13,
+    percent: 70,
+    stroke: 6,
+    strokeBottom: 10,
+    colorSlice: "#2196F3",
+    colorCircle: "#E3F2FD",
+    fill: "#E3F2FD",
+    round: true
+  },
+  {
+    id: 14,
+    percent: 80,
+    stroke: 6,
+    strokeBottom: 10,
+    colorSlice: "#FBC02D",
+    colorCircle: "#FFFDE7",
+    fill: "#FFFDE7",
+    round: true
+  }
+];
+
+const unit = [
+  {
+    id: 15,
+    percent: 75,
+    stroke: 4,
+    strokeBottom: 10,
+    colorSlice: "#fff",
+    colorCircle: "#F50057",
+    fontSize: "1.2em",
+    unit: "PL",
+    round: true
+  },
+  {
+    id: 16,
+    percent: 55,
+    stroke: 4,
+    strokeBottom: 10,
+    colorSlice: "#fff",
+    colorCircle: "#D500F9",
+    fontSize: "1.2em",
+    unit: "GB",
+    round: true
+  },
+  {
+    id: 17,
+    percent: 35,
+    stroke: 4,
+    strokeBottom: 10,
+    colorSlice: "#fff",
+    colorCircle: "#1B5E20",
+    fontSize: "1.2em",
+    unit: "$",
+    round: true
+  }
+];
+
+const cut = [
+  {
+    id: 18,
     percent: 50,
     colorSlice: "#F44336",
     colorCircle: "#f1f1f1",
@@ -108,7 +177,7 @@ const cut = [
     rotation: 144
   },
   {
-    id: 13,
+    id: 19,
     percent: 75,
     colorSlice: "#D500F9",
     colorCircle: "#e6e6e6",
@@ -119,7 +188,7 @@ const cut = [
     round: true
   },
   {
-    id: 14,
+    id: 20,
     percent: 100,
     colorSlice: "#33691E",
     colorCircle: "#e6e6e6",
@@ -134,7 +203,7 @@ const cut = [
 
 const images = [
   {
-    id: 15,
+    id: 21,
     percent: 55,
     colorSlice: "#CDDC39",
     colorCircle: "#f1f1f1",
@@ -143,7 +212,7 @@ const images = [
     textPosition: "1.5em"
   },
   {
-    id: 16,
+    id: 22,
     percent: 75,
     colorSlice: "#ffc107",
     colorCircle: "#e6e6e6",
@@ -152,7 +221,7 @@ const images = [
     textPosition: "1.5em"
   },
   {
-    id: 17,
+    id: 23,
     percent: 85,
     colorSlice: "#00bcd4",
     colorCircle: "#e6e6e6",
@@ -164,14 +233,14 @@ const images = [
 
 const imagesWithText = [
   {
-    id: 18,
+    id: 24,
     percent: 55,
     colorSlice: "#CDDC39",
     colorCircle: "#f1f1f1",
     number: false
   },
   {
-    id: 19,
+    id: 25,
     percent: 75,
     colorSlice: "#ffc107",
     colorCircle: "#e6e6e6",
@@ -179,7 +248,7 @@ const imagesWithText = [
     number: false
   },
   {
-    id: 20,
+    id: 26,
     percent: 85,
     colorSlice: "#00bcd4",
     colorCircle: "#e6e6e6",
@@ -190,21 +259,21 @@ const imagesWithText = [
 
 const withoutNumber = [
   {
-    id: 21,
+    id: 27,
     percent: 60,
     colorSlice: "#000",
     colorCircle: "#e6e6e6",
     number: false
   },
   {
-    id: 22,
+    id: 28,
     percent: 70,
     colorSlice: "#ffc107",
     colorCircle: "#e6e6e6",
     number: false
   },
   {
-    id: 23,
+    id: 29,
     percent: 80,
     colorSlice: "#00bcd4",
     colorCircle: "#e6e6e6",
@@ -242,6 +311,16 @@ function App() {
       </section>
       <section>
         {simple.map((props, index) => {
+          return <CircularProgressBar key={index} {...props} />;
+        })}
+      </section>
+      <section>
+        {fill.map((props, index) => {
+          return <CircularProgressBar key={index} {...props} />;
+        })}
+      </section>
+      <section>
+        {unit.map((props, index) => {
           return <CircularProgressBar key={index} {...props} />;
         })}
       </section>
