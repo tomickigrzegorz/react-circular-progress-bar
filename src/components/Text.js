@@ -23,8 +23,8 @@ const Text = () => {
       textAnchor="middle"
       dy={textPosition} // fixed issue with centering text vertical
     >
-      {counter}
-      <tspan className={`circular-tspan-${id || 0}`}>{unit}</tspan>
+      <tspan className={`circular-percent-${id}`}>{counter}</tspan>
+      <tspan className={`circular-unit-${id}`}>{unit}</tspan>
     </text>
   ) : null;
 };
