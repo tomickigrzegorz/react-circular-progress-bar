@@ -280,18 +280,18 @@ Cut.args = {
 
 export const Fill = Template.bind({});
 Fill.args = {
-  fill: "#FFEBEE",
+  fill: "#EFEBE9",
   percent: 60,
   stroke: 6,
   strokeBottom: 10,
-  colorSlice: "#FF1744",
-  colorCircle: "#FFEBEE",
+  colorSlice: "#4E342E",
+  colorCircle: "#EFEBE9",
   round: true
 };
 
 export const Unit = Template.bind({});
 Unit.args = {
-  id: 20,
+  id: 15,
   unit: "PL",
   percent: 75,
   stroke: 4,

@@ -31,7 +31,7 @@ const Top = () => {
   return (
     <>
       {linearGradient && (
-        <GradientLinear index={id || 0} linearGradient={linearGradient} />
+        <GradientLinear index={id} linearGradient={linearGradient} />
       )}
       <circle
         cx="50%"

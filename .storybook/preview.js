@@ -1,19 +1,19 @@
-
-import 'intersection-observer';
+import "intersection-observer";
+import "../src/index.css";
 
 export const parameters = {
-  layout: 'centered',
+  layout: "centered",
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     expanded: true,
     matchers: {
       color: /(background|color)$/i,
-      date: /Date$/,
-    },
+      date: /Date$/
+    }
   },
   docs: {
     source: {
-      excludeDecorators: true,
-    },
-  },
+      excludeDecorators: true
+    }
+  }
 };

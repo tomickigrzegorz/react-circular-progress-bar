@@ -25,6 +25,7 @@ const CircleType = {
 };
 
 const CircleDefaultProps = {
+  id: 0,
   colorSlice: "#00a1ff",
   round: false,
   number: true,
@@ -37,7 +38,7 @@ const CircleDefaultProps = {
   unit: "%",
   textPosition: ".35em",
   fontSize: "1.6rem",
-  fontColor: "#365b74",
+  fontColor: "#000",
   fill: "none",
   fontWeight: 400
 };
