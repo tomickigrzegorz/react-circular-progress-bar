@@ -8,7 +8,7 @@ const Wrapper = ({ children }) => {
       role="img"
       width={size}
       height={size}
-      data-index={id || 0}
+      data-index={id}
       viewBox="0 0 100 100"
       aria-labelledby="circular progress bar">
       {children}
