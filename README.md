@@ -167,10 +167,20 @@ const config = {
 </CircularProgressBar>
 ```
 
-### How to turn off `%`?
+### How to turn off `%` or style them?
 
 Turning off the percentage and leaving the number alone is very simple.
-Each percent (%) has a class of `circular-tspan-x` of course you must add for each circle` id`. If you don't do this, the class will always be `circular-tspan-0`. Just add `.circular-tspan-x {display: none}` to our styles. Digit animation remains but percent sign [%] disappears.
+Each percent (%) has a class of `circular-unit-x` of course you must add for each circle` id`. If you don't do this, the class will always be `circular-unit-0`. Just add `.circular-unit-x { display: none }` to our styles. Digit animation remains but percent sign [%] disappears.
+
+You can also style this elements to create your own styles, example below:
+
+```css
+.circular-unit-15 {
+  fill: #f50057;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+```
 
 ## Configuration of the plugin
 
@@ -198,6 +208,7 @@ Each percent (%) has a class of `circular-tspan-x` of course you must add for ea
 | fontWeight     | number  |    `400`    |         | 400, 600, ... |
 | fontColor      | string  | `'#365b74'` |         | Font color ["#ffff00","brown" \*](#colors-names) |
 | linearGradient |  array  |             |         | Array of colors "lineargradient": ["#ffff00","brown" \*](#colors-names) |
+
 
 ## Colors names
 

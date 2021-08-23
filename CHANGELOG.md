@@ -1,3 +1,11 @@
+## v0.1.22 (2021-08-23)
+
+### Changed
+- a separate element for a digits (tspan - `circular-percent-x`)
+- the color of the `text` element to `#000`
+- updated style storybook `unit`
+- upgrating storybook to 6.3.7
+
 ## v0.1.21 (2021-08-20)
 
 ### Added
