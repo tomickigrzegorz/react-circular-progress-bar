@@ -14,7 +14,7 @@ const styleObj = {
 };
 
 export default {
-  title: "CircularProgressBar",
+  title: "Circular-Progress-Bar",
   component: CircularProgressBar,
   parameters: { controls: { sort: "requiredFirst" } },
   argTypes: {
