@@ -97,27 +97,26 @@ describe("CircularProgressBar", function () {
     };
 
     const { container } = render(<CircularProgressBar {...props} />);
-
-    const text = container.querySelector("text");
-    expect(text).toBeFalsy();
+    expect(container.querySelector("text")).toBeFalsy();
   });
 
   test('checking if it exists `stroke-linecap="round"`', () => {
     const props = {
       percent: 60,
-      round: true
+      strokeLinecap: "butt"
     };
 
-    render(<CircularProgressBar {...props} />);
-
-    expect(screen.findByText(`[stroke-linecap="round"]`)).toBeTruthy();
+    const { container } = render(<CircularProgressBar {...props} />);
+    expect(container.querySelector("[stroke-linecap='butt']")).toBeTruthy();
   });
 
-  test('checking if it `stroke="#CDDC39"`', () => {
-    const { container } = render(
-      <CircularProgressBar colorCircle={"red"} percent={60} />
-    );
+  test('checking if it exists `stroke-dasharray="10, 1"`', () => {
+    const props = {
+      percent: 70,
+      strokeDasharray: "10, 1"
+    };
 
-    expect(container.querySelector(`[stroke="#CDDC39"]`)).toBeFalsy();
+    const { container } = render(<CircularProgressBar {...props} />);
+    expect(container.querySelector("[stroke-dasharray='10, 1']")).toBeTruthy();
   });
 });
