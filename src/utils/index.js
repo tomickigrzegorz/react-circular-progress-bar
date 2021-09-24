@@ -26,25 +26,10 @@ const useOnScreen = (ref) => {
   return isIntersecting;
 };
 
-const hex2rgb = (hex, opacity = 10) => {
-  const c = typeof hex === "string" ? parseInt(hex.replace("#", ""), 16) : hex;
-  return `rgba(${c >> 16},
-    ${(c & 0xff00) >> 8}, 
-    ${c & 0xff}, 
-    ${opacity / 100})`;
-};
-
-const styleObj = ({ stroke, colorSlice, colorCircle, opacity, size }) => {
-  const boxShadow =
-    colorCircle === undefined
-      ? `inset 0px 0px ${stroke}px ${stroke}px ${hex2rgb(colorSlice, opacity)}`
-      : "";
+const styleObj = ({ size }) => {
   return {
-    position: "relative",
     width: size,
-    height: size,
-    borderRadius: "50%",
-    boxShadow
+    height: size
   };
 };
 
