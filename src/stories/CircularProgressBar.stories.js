@@ -14,8 +14,8 @@ const styleObj = {
 };
 
 export default {
-  component: CircularProgressBar,
   title: "CircularProgressBar",
+  component: CircularProgressBar,
   parameters: { controls: { sort: "requiredFirst" } },
   argTypes: {
     percent: {
@@ -83,7 +83,7 @@ export default {
       table: { defaultValue: { summary: "-90" } }
     },
     cut: {
-      control: { type: "range", min: 1, max: 100 },
+      control: { type: "range", min: 0, max: 100 },
       description: "Angle of the circle sector",
       table: { defaultValue: { summary: "30" } }
     },
@@ -111,6 +111,11 @@ export default {
     inverse: {
       description: "Counterclockwise animation",
       table: { defaultValue: { summary: "false" } }
+    },
+    strokeDasharray: {
+      control: "text",
+      table: { defaultValue: { summary: '"10,1"' } },
+      description: 'stroke-dasharray: "10,1"'
     }
   },
   decorators: [
@@ -122,7 +127,7 @@ export default {
   ]
 };
 
-const hideRecord = {
+const hide = {
   table: {
     disable: true
   }
@@ -131,75 +136,78 @@ const hideRecord = {
 CircularProgressBar.displayName = "CircularProgressBar";
 const Template = (args) => <CircularProgressBar {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+// minimal
+export const Minimal = Template.bind({});
+Minimal.args = {
   percent: 75,
-  colorSlice: "#E91E63",
-  stroke: 10,
-  round: false,
-  number: true,
-  size: 200,
-  speed: 1000,
-  rotation: -90,
-  cut: 0,
-  fill: "none",
-  inverse: false,
   fontSize: "1.6rem",
-  fontWeight: 400,
-  fontColor: "#365b74",
-  fill: "none",
-  animationOff: false
+  number: true,
+  animationOff: false,
+  round: false,
+  inverse: false
 };
 
-Default.argTypes = {
-  linearGradient: hideRecord,
-  colorCircle: hideRecord,
-  strokeBottom: hideRecord
+Minimal.argTypes = {
+  linearGradient: hide,
+  colorCircle: hide,
+  strokeBottom: hide,
+  strokeDasharray: hide,
+  cut: hide
 };
 
-export const linearGradient = Template.bind({});
-linearGradient.args = {
-  percent: 70,
-  round: true,
-  fontWeight: 400,
-  fontColor: "#365b74",
-  colorCircle: "#e6e6e6",
-  linearGradient: ["yellow", "#ff0000"],
-  animationOff: false
-};
-
-linearGradient.argTypes = {
-  colorSlice: hideRecord,
-  opacity: hideRecord
-};
-
+// simple
 export const Simple = Template.bind({});
 Simple.args = {
-  percent: 55,
-  fontWeight: 100,
-  fontColor: "#365b74",
+  ...Minimal.args,
   colorSlice: "#CDDC39",
   colorCircle: "#f1f1f1"
 };
 
 Simple.argTypes = {
-  opacity: hideRecord,
-  linearGradient: hideRecord
+  opacity: hide,
+  linearGradient: hide,
+  strokeDasharray: hide
 };
 
-export const WithoutNumber = Template.bind({});
-WithoutNumber.args = {
-  percent: 60,
-  colorSlice: "#000",
-  colorCircle: "#e6e6e6",
-  number: false
+// animation off
+export const AnimationOff = Template.bind({});
+AnimationOff.args = {
+  animationOff: true,
+  percent: 75,
+  colorSlice: "#AA00FF",
+  colorCircle: "#f1f1f1"
 };
 
-WithoutNumber.argTypes = {
-  opacity: hideRecord,
-  linearGradient: hideRecord
+// counter-clockwise
+export const CounterClockwise = Template.bind({});
+CounterClockwise.args = {
+  inverse: true,
+  percent: 75
 };
 
+// cut
+export const Cut = Template.bind({});
+Cut.args = {
+  cut: 30,
+  percent: 75,
+  rotation: 144,
+  colorSlice: "#EC407A",
+  colorCircle: "#f1f1f1"
+};
+
+// fill
+export const Fill = Template.bind({});
+Fill.args = {
+  fill: "#EFEBE9",
+  percent: 75,
+  stroke: 6,
+  strokeBottom: 10,
+  colorSlice: "#4E342E",
+  colorCircle: "#EFEBE9",
+  round: true
+};
+
+// image
 const TemplateImage = (args) => (
   <CircularProgressBar {...args}>
     <img
@@ -216,20 +224,19 @@ const TemplateImage = (args) => (
   </CircularProgressBar>
 );
 
+// image
 export const Image = TemplateImage.bind({});
 Image.args = {
-  percent: 67,
+  percent: 75,
   colorSlice: "#FF0000",
   colorCircle: "#f1f1f1",
-  textPosition: "1.5em",
+  textPosition: "1.7em",
   fontSize: "1rem",
-  animationOff: false,
-  fontWeight: 100,
-  fontWeight: 400,
   stroke: 6,
   round: true
 };
 
+// image with text
 const TemplateImageWithText = (args) => (
   <CircularProgressBar {...args}>
     <img
@@ -248,56 +255,105 @@ const TemplateImageWithText = (args) => (
   </CircularProgressBar>
 );
 
+// image with text
 export const ImageWithYourText = TemplateImageWithText.bind({});
 ImageWithYourText.args = {
   percent: 75,
   colorSlice: "#ff8c69",
   colorCircle: "#f1f1f1",
-  textPosition: "1.5em",
   number: false,
-  animationOff: false,
   round: true,
-  stroke: 6,
-  strokeBottom: 6
+  stroke: 6
 };
 
-export const Inverse = Template.bind({});
-Inverse.args = {
-  inverse: true,
-  percent: 75
-};
-
-export const Cut = Template.bind({});
-Cut.args = {
-  cut: 30,
+// linear gradient
+export const linearGradient = Template.bind({});
+linearGradient.args = {
   percent: 75,
-  rotation: 144,
-  colorSlice: "#EC407A",
-  colorCircle: "#f1f1f1",
-  textPosition: "0.8em",
-  fontSize: "1.1rem"
+  round: true,
+  colorCircle: "#e6e6e6",
+  linearGradient: ["yellow", "#ff0000"]
 };
 
-export const Fill = Template.bind({});
-Fill.args = {
-  fill: "#EFEBE9",
-  percent: 60,
-  stroke: 6,
-  strokeBottom: 10,
-  colorSlice: "#4E342E",
-  colorCircle: "#EFEBE9",
+linearGradient.argTypes = {
+  colorSlice: hide,
+  opacity: hide
+};
+
+// rotation
+export const Rotation = Template.bind({});
+Rotation.args = {
+  rotation: 90,
+  percent: 75,
+  colorSlice: "#ff8c69",
+  colorCircle: "#f1f1f1"
+};
+
+// speed
+export const Speed = Template.bind({});
+Speed.args = {
+  speed: 30,
+  percent: 75,
+  colorSlice: "#DD2C00",
+  colorCircle: "#f1f1f1",
   round: true
 };
 
+// stroke bottom
+export const StrokeBottom = Template.bind({});
+StrokeBottom.args = {
+  strokeBottom: 5,
+  percent: 75,
+  colorSlice: "#EC407A",
+  colorCircle: "#f1f1f1",
+  round: true
+};
+
+// stroke-dasharray
+export const StrokeDasharray = Template.bind({});
+StrokeDasharray.args = {
+  percent: 75,
+  colorSlice: "#FFF",
+  colorCircle: "#37474F",
+  stroke: 3,
+  strokeBottom: 10,
+  strokeDasharray: "10, 1",
+  fontSize: "1.6rem",
+  inverse: false,
+  number: true,
+  round: true
+};
+
+StrokeDasharray.argTypes = {
+  linearGradient: hide,
+  animationOff: hide,
+  opacity: hide,
+  cut: hide
+};
+
+// unit
 export const Unit = Template.bind({});
 Unit.args = {
-  id: 15,
+  id: 15, // important if you need style `unit` in css
   unit: "PL",
   percent: 75,
   stroke: 4,
   strokeBottom: 10,
   colorSlice: "#fff",
   colorCircle: "#F50057",
-  fontSize: "1.2em",
   round: true
+};
+
+// without number
+export const WithoutNumber = Template.bind({});
+WithoutNumber.args = {
+  percent: 75,
+  colorSlice: "#000",
+  colorCircle: "#e6e6e6",
+  number: false
+};
+
+WithoutNumber.argTypes = {
+  opacity: hide,
+  linearGradient: hide
 };
