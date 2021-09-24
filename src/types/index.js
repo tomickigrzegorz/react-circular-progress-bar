@@ -6,8 +6,6 @@ const CircleType = {
   percent: number.isRequired,
   colorSlice: string,
   colorCircle: string,
-  stroke: number,
-  strokeBottom: number,
   round: bool,
   opacity: number,
   number: bool,
@@ -20,6 +18,9 @@ const CircleType = {
   fontSize: string,
   fill: string,
   fontWeight: number,
+  stroke: number,
+  strokeBottom: number,
+  strokeDasharray: string,
   fontColor: string,
   linearGradient: array
 };

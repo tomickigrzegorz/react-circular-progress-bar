@@ -1,231 +1,158 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, Fragment } from "react";
 import CircularProgressBar from "./components/CircularProgressBar";
 
-const defaults = [
+const minimal = [
   {
     id: 0,
-    percent: 50,
-    colorSlice: "#E91E63"
-  },
-  {
-    id: 1,
-    percent: 60,
-    colorSlice: "#ffc107"
-  },
-  {
-    id: 2,
-    percent: 70,
-    colorSlice: "#00bcd4",
-    animationOff: true
-  }
-];
-
-const lineargradient = [
-  {
-    id: 3,
-    linearGradient: ["yellow", "#ff0000"],
-    round: true,
-    percent: 70,
-    colorCircle: "#e6e6e6"
-  },
-  {
-    id: 4,
-    linearGradient: ["#ff0000", "#9c27b0"],
-    round: true,
-    percent: 80,
-    colorCircle: "#e6e6e6"
-  },
-  {
-    id: 5,
-    linearGradient: ["#ff0000", "yellow"],
-    round: true,
-    percent: 90,
-    colorCircle: "#e6e6e6"
+    percent: 75
   }
 ];
 
 const simple = [
   {
-    id: 6,
-    percent: 55,
+    id: 1,
+    percent: 75,
+    colorSlice: "#BF360C",
+    colorCircle: "#f1f1f1",
+    fontWeight: 100
+  }
+];
+
+const linearGradient = [
+  {
+    id: 2,
+    linearGradient: ["yellow", "#ff0000"],
+    percent: 75,
+    colorCircle: "#e6e6e6",
+    round: true
+  }
+];
+
+const counterclockwise = [
+  {
+    id: 3,
+    inverse: true,
+    percent: 75,
+    colorSlice: "#AB47BC",
+    colorCircle: "#f1f1f1",
+    fontWeight: 100
+  }
+];
+
+const strokeDasharray = [
+  {
+    id: 4,
+    strokeDasharray: "1, 2",
+    percent: 75,
+    colorSlice: "#F5F5F5",
+    colorCircle: "#424242",
+    stroke: 5,
+    strokeBottom: 10,
+    round: true
+  }
+];
+
+const animationOff = [
+  {
+    id: 5,
+    animationOff: true,
+    percent: 75,
     colorSlice: "#CDDC39",
     colorCircle: "#f1f1f1",
-    fontWeight: 100,
-    inverse: true
-  },
+    fontWeight: 100
+  }
+];
+
+const withoutNumber = [
   {
-    id: 7,
+    id: 6,
+    number: false,
     percent: 75,
-    colorSlice: "#ffc107",
-    colorCircle: "#e6e6e6",
-    fontWeight: 100
-  },
-  {
-    id: 8,
-    percent: 85,
-    colorSlice: "#00bcd4",
-    colorCircle: "#e6e6e6",
-    fontWeight: 100
+    colorSlice: "#000",
+    colorCircle: "#e6e6e6"
   }
 ];
 
 const rotation = [
   {
-    id: 9,
-    percent: 60,
-    colorSlice: "#FF1744",
+    id: 7,
+    rotation: 90,
+    percent: 75,
+    colorSlice: "#ff8c69",
     colorCircle: "#f1f1f1",
-    fontWeight: 100,
-    rotation: 90
-  },
-  {
-    id: 10,
-    percent: 70,
-    colorSlice: "#4A148C",
-    colorCircle: "#e6e6e6",
-    fontWeight: 100,
-    rotation: 180
-  },
-  {
-    id: 11,
-    percent: 80,
-    colorSlice: "#FBC02D",
-    colorCircle: "#e6e6e6",
-    fontWeight: 100,
-    rotation: 360,
-    seed: 10
+    fontWeight: 100
   }
 ];
 
 const fill = [
   {
-    id: 12,
-    percent: 60,
+    id: 8,
+    fill: "#EFEBE9",
+    percent: 75,
     stroke: 6,
     strokeBottom: 10,
-    colorSlice: "#FF1744",
-    colorCircle: "#FFEBEE",
-    fill: "#FFEBEE",
-    round: true
-  },
-  {
-    id: 13,
-    percent: 70,
-    stroke: 6,
-    strokeBottom: 10,
-    colorSlice: "#2196F3",
-    colorCircle: "#E3F2FD",
-    fill: "#E3F2FD",
-    round: true
-  },
-  {
-    id: 14,
-    percent: 80,
-    stroke: 6,
-    strokeBottom: 10,
-    colorSlice: "#FBC02D",
-    colorCircle: "#FFFDE7",
-    fill: "#FFFDE7",
+    colorSlice: "#4E342E",
+    colorCircle: "#EFEBE9",
+    fontSize: "1.3em",
     round: true
   }
 ];
 
 const unit = [
   {
-    id: 15,
+    id: 9,
+    unit: "PL",
     percent: 75,
-    stroke: 4,
+    stroke: 5,
     strokeBottom: 10,
     colorSlice: "#fff",
     colorCircle: "#F50057",
-    fontSize: "1.2em",
-    unit: "PL",
     round: true
-  },
+  }
+];
+
+const strokeBottom = [
   {
-    id: 16,
-    percent: 55,
-    stroke: 4,
-    strokeBottom: 10,
-    colorSlice: "#fff",
-    colorCircle: "#D500F9",
-    fontSize: "1.2em",
-    unit: "GB",
+    id: 10,
+    strokeBottom: 5,
+    percent: 75,
+    colorSlice: "#EC407A",
+    colorCircle: "#f1f1f1",
     round: true
-  },
+  }
+];
+
+const speed = [
   {
-    id: 17,
-    percent: 35,
-    stroke: 4,
-    strokeBottom: 10,
-    colorSlice: "#fff",
-    colorCircle: "#1B5E20",
-    fontSize: "1.2em",
-    unit: "$",
+    id: 11,
+    speed: 30,
+    percent: 75,
+    colorSlice: "#DD2C00",
+    colorCircle: "#f1f1f1",
     round: true
   }
 ];
 
 const cut = [
   {
-    id: 18,
-    percent: 50,
-    colorSlice: "#F44336",
-    colorCircle: "#f1f1f1",
-    fontWeight: 100,
+    id: 12,
     cut: 30,
-    rotation: 144
-  },
-  {
-    id: 19,
     percent: 75,
-    colorSlice: "#D500F9",
-    colorCircle: "#e6e6e6",
-    fontSize: "1.2rem",
-    strokeBottom: 5,
-    cut: 30,
     rotation: 144,
-    round: true
-  },
-  {
-    id: 20,
-    percent: 100,
-    colorSlice: "#33691E",
-    colorCircle: "#e6e6e6",
-    cut: 30,
-    rotation: 36,
-    round: true,
-    inverse: true,
-    textPosition: "0.8em",
+    colorSlice: "#F50057",
+    colorCircle: "#f1f1f1",
+    textPosition: "1em",
     fontSize: "1.2rem"
   }
 ];
 
 const images = [
   {
-    id: 21,
-    percent: 55,
-    colorSlice: "#CDDC39",
-    colorCircle: "#f1f1f1",
-    fontWeight: 100,
-    fontSize: "1rem",
-    textPosition: "1.5em"
-  },
-  {
-    id: 22,
+    id: 13,
     percent: 75,
-    colorSlice: "#ffc107",
-    colorCircle: "#e6e6e6",
     fontWeight: 100,
-    fontSize: "1rem",
-    textPosition: "1.5em"
-  },
-  {
-    id: 23,
-    percent: 85,
-    colorSlice: "#00bcd4",
-    colorCircle: "#e6e6e6",
-    fontWeight: 100,
+    colorSlice: "#6200EA",
+    colorCircle: "#f1f1f1",
     fontSize: "1rem",
     textPosition: "1.5em"
   }
@@ -233,153 +160,345 @@ const images = [
 
 const imagesWithText = [
   {
-    id: 24,
-    percent: 55,
-    colorSlice: "#CDDC39",
+    id: 14,
+    percent: 75,
+    colorSlice: "#795548",
     colorCircle: "#f1f1f1",
     number: false
-  },
-  {
-    id: 25,
-    percent: 75,
-    colorSlice: "#ffc107",
-    colorCircle: "#e6e6e6",
-    fontWeight: 100,
-    number: false
-  },
-  {
-    id: 26,
-    percent: 85,
-    colorSlice: "#00bcd4",
-    colorCircle: "#e6e6e6",
-    fontWeight: 100,
-    number: false
-  }
-];
-
-const withoutNumber = [
-  {
-    id: 27,
-    percent: 60,
-    colorSlice: "#000",
-    colorCircle: "#e6e6e6",
-    number: false
-  },
-  {
-    id: 28,
-    percent: 70,
-    colorSlice: "#ffc107",
-    colorCircle: "#e6e6e6",
-    number: false
-  },
-  {
-    id: 29,
-    percent: 80,
-    colorSlice: "#00bcd4",
-    colorCircle: "#e6e6e6",
-    number: false,
-    animationOff: true
   }
 ];
 
 function App() {
-  const [first, setFirst] = useState(defaults[0]);
+  const [progress, setProgress] = useState(75);
+  const percent = { percent: progress };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setFirst({
-        ...defaults[0],
-        id: 0,
-        percent: Math.floor(Math.random() * 100 + 1)
-      });
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const onClick = (e) => {
+    e.preventDefault();
+    e.target.closest("section").lastElementChild.classList.toggle("active");
+  };
 
   return (
-    <div className="container">
-      <section>
-        {defaults.map((props, index) => {
-          const newObject = index === first.id ? { ...props, ...first } : props;
-          return <CircularProgressBar key={index} {...newObject} />;
-        })}
-      </section>
-      <section>
-        {lineargradient.map((props, index) => {
-          return <CircularProgressBar key={index} {...props} />;
-        })}
-      </section>
-      <section>
-        {simple.map((props, index) => {
-          return <CircularProgressBar key={index} {...props} />;
-        })}
-      </section>
-      <section>
-        {fill.map((props, index) => {
-          return <CircularProgressBar key={index} {...props} />;
-        })}
-      </section>
-      <section>
-        {unit.map((props, index) => {
-          return <CircularProgressBar key={index} {...props} />;
-        })}
-      </section>
-      <section>
-        {rotation.map((props, index) => {
-          return <CircularProgressBar key={index} {...props} />;
-        })}
-      </section>
-      <section>
-        {cut.map((props, index) => {
-          return <CircularProgressBar key={index} {...props} />;
-        })}
-      </section>
-      <section>
-        {images.map((props, index) => {
-          return (
-            <CircularProgressBar key={index} {...props}>
-              <img
-                src="https://picsum.photos/100/100"
-                style={{
-                  width: "60px",
-                  borderRadius: "50%",
-                  marginTop: "-40px",
-                  padding: "2px",
-                  border: "3px solid salmon"
-                }}
-                alt="Random"
-              />
-            </CircularProgressBar>
-          );
-        })}
-      </section>
-      <section>
-        {imagesWithText.map((props, index) => {
-          return (
-            <CircularProgressBar key={index} {...props}>
-              <img
-                src="https://picsum.photos/100/100"
-                style={{
-                  width: "60px",
-                  borderRadius: "50%",
-                  padding: "2px",
-                  border: "2px solid black"
-                }}
-                alt="Images with text"
-              />
-              <div style={{ textAlign: "center", padding: "0 35px" }}>
-                Lorem, ipsum dolor.
-              </div>
-            </CircularProgressBar>
-          );
-        })}
-      </section>
-      <section>
-        {withoutNumber.map((props, index) => {
-          return <CircularProgressBar key={index} {...props} />;
-        })}
-      </section>
-    </div>
+    <Fragment>
+      <h1>circular-progress-bar</h1>
+      <div className="flex progress-wrapper">
+        <div className="progress">progress</div>
+        <input
+          type="range"
+          value={progress}
+          min="0"
+          max="100"
+          onChange={(event) => setProgress(parseInt(event.target.value, 10))}
+        />
+      </div>
+
+      <div className="flex container">
+        <section>
+          <div className="flex info">
+            <div className="info-name">minimal</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {minimal.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(minimal[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">minimal width shadow</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          <div className="shadow">
+            {minimal.map((props, index) => {
+              const object = { ...props, ...percent };
+              return <CircularProgressBar key={index} {...object} />;
+            })}
+          </div>
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(minimal[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">simple</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {simple.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(simple[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">linear gradient</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {linearGradient.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(linearGradient[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">counterclockwise</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {counterclockwise.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(counterclockwise[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">stroke-dasharray</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {strokeDasharray.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(strokeDasharray[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">animation off</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {animationOff.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(animationOff[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">without number</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {withoutNumber.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(withoutNumber[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">rotation</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {rotation.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(rotation[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">fill</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {fill.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(fill[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">unit</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {unit.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(unit[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">stroke bottom</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {strokeBottom.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(strokeBottom[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">speed</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {speed.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(speed[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">cut</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {cut.map((props, index) => {
+            const object = { ...props, ...percent };
+            return <CircularProgressBar key={index} {...object} />;
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(cut[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+
+        <section>
+          <div className="flex info">
+            <div className="info-name">image</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {images.map((props, index) => {
+            const object = { ...props, ...percent };
+            return (
+              <CircularProgressBar key={index} {...object}>
+                <img
+                  src="https://picsum.photos/100/100"
+                  style={{
+                    width: "60px",
+                    borderRadius: "50%",
+                    marginTop: "-40px",
+                    padding: "2px",
+                    border: "3px solid salmon"
+                  }}
+                  alt="Random"
+                />
+              </CircularProgressBar>
+            );
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(images[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+        <section>
+          <div className="flex info">
+            <div className="info-name">image without number</div>
+            <div className="info-code" onClick={onClick}>
+              code
+            </div>
+          </div>
+          {imagesWithText.map((props, index) => {
+            const object = { ...props, ...percent };
+            return (
+              <CircularProgressBar key={index} {...object}>
+                <img
+                  src="https://picsum.photos/100/100"
+                  style={{
+                    width: "60px",
+                    borderRadius: "50%",
+                    padding: "2px",
+                    border: "2px solid black"
+                  }}
+                  alt="Images with text"
+                />
+                <div style={{ textAlign: "center", padding: "0 35px" }}>
+                  Lorem, ipsum dolor.
+                </div>
+              </CircularProgressBar>
+            );
+          })}
+          <div className="precode">
+            <pre>
+              <code>{JSON.stringify(imagesWithText[0], null, 2)}</code>
+            </pre>
+          </div>
+        </section>
+      </div>
+    </Fragment>
   );
 }
 

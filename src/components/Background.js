@@ -10,7 +10,8 @@ const Background = () => {
     strokeBottom,
     cut,
     rotation,
-    colorCircle
+    colorCircle,
+    strokeDasharray
   } = useContext(PropsContext);
 
   const dashoffset = 264 - (100 - cut) * 2.64;
@@ -28,9 +29,9 @@ const Background = () => {
       }}
       stroke={colorCircle}
       strokeWidth={strokeBottom || stroke}
-      strokeLinecap={round ? "round" : "butt"}
+      strokeLinecap={round && !strokeDasharray ? "round" : "butt"}
       strokeDashoffset={inverse ? -dashoffset : dashoffset}
-      strokeDasharray={264}
+      strokeDasharray={cut ? 264 : strokeDasharray}
     />
   );
 };

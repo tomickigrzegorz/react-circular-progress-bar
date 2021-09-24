@@ -1,6 +1,6 @@
-* {
-  margin: 0;
-  padding: 0;
+*,
+*:before,
+*:after {
   box-sizing: border-box;
 }
 
@@ -8,54 +8,104 @@ html {
   height: 100%;
 }
 
+html,
 body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
   min-height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji,
-    Segoe UI Emoji, Segoe UI Symbol;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  background: #eceff1;
+}
+
+h1 {
+  margin: auto;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.progress-wrapper {
+  max-width: 350px;
+  justify-content: space-between;
+  margin: auto;
+  padding: 40px 20px 30px;
+  text-transform: uppercase;
+}
+
+.flex {
+  display: flex;
+}
+
+[type="range"] {
+  width: 200px;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  margin: auto;
 }
 
 section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
   position: relative;
-  height: 100vh;
-  width: 100%;
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 5px 30px 30px;
+  margin: 20px;
+  width: 260px;
+  height: 306px;
 }
 
-section:after {
-  position: absolute;
-  content: "scroll down";
-  bottom: 10px;
-  font-size: 20px;
+[data-angel] {
+  position: relative;
+}
+
+.info {
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px 0;
   text-transform: uppercase;
-  text-align: center;
+  font-size: 90%;
+  margin: auto -15px 30px;
 }
 
-section:nth-child(even) {
-  background: #f8f8f8;
+.shadow {
+  border-radius: 50%;
+  box-shadow: inset 0 0 25px 10px rgb(162 202 255);
 }
 
-.circular-unit-15 {
+.circular-unit-9 {
   fill: #f50057;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 1rem;
 }
 
-.circular-unit-16 {
-  fill: #d500f9;
-  font-size: 0.8rem;
-  font-weight: 700;
+.info-code {
+  cursor: pointer;
 }
 
-.circular-unit-17 {
-  fill: #1b5e20;
-  font-size: 0.8rem;
-  font-weight: 700;
+h3 {
+  font-weight: inherit;
+  margin: 0;
+  font-size: 100%;
+}
+
+.precode {
+  position: absolute;
+  display: none;
+  top: 46px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 46px);
+  padding: 0 15px;
+  background: rgba(255, 255, 255, 1);
+}
+
+.active {
+  display: block;
 }
