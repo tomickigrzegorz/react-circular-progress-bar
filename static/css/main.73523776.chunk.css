@@ -1,0 +1,114 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  background: #eceff1;
+}
+
+h1 {
+  margin: auto;
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.progress-wrapper {
+  max-width: 350px;
+  justify-content: space-between;
+  margin: auto;
+  padding: 40px 20px 30px;
+  text-transform: uppercase;
+}
+
+.flex {
+  display: flex;
+}
+
+[type="range"] {
+  width: 200px;
+}
+
+.container {
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  margin: auto;
+}
+
+section {
+  position: relative;
+  background-color: #fff;
+  border-radius: 7px;
+  padding: 5px 30px 30px;
+  margin: 20px;
+  width: 260px;
+  height: 306px;
+}
+
+[data-angel] {
+  position: relative;
+}
+
+.info {
+  justify-content: space-between;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 10px 0;
+  text-transform: uppercase;
+  font-size: 90%;
+  margin: auto -15px 30px;
+}
+
+.shadow {
+  border-radius: 50%;
+  box-shadow: inset 0 0 25px 10px rgb(162 202 255);
+}
+
+.circular-unit-9 {
+  fill: #f50057;
+  font-size: 1rem;
+}
+
+.info-code {
+  cursor: pointer;
+}
+
+h3 {
+  font-weight: inherit;
+  margin: 0;
+  font-size: 100%;
+}
+
+.precode {
+  position: absolute;
+  display: none;
+  top: 46px;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 46px);
+  padding: 0 15px;
+  background: rgba(255, 255, 255, 1);
+}
+
+.active {
+  display: block;
+}
+
+
+/*# sourceMappingURL=main.73523776.chunk.css.map*/
