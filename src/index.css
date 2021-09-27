@@ -50,6 +50,7 @@ h1 {
   justify-content: center;
   max-width: 100%;
   margin: auto;
+  padding-bottom: 100px;
 }
 
 section {
@@ -98,15 +99,10 @@ h3 {
 
 .precode {
   position: absolute;
-  display: none;
   top: 46px;
   left: 0;
   width: 100%;
   height: calc(100% - 46px);
   padding: 0 15px;
   background: rgba(255, 255, 255, 1);
-}
-
-.active {
-  display: block;
 }
