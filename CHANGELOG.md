@@ -1,3 +1,9 @@
+## v1.0.24 (2021-09-27)
+
+### Changed
+
+- rebuilded presentation examples 
+
 ## v1.0.23 (2021-09-24)
 
 ### Added
