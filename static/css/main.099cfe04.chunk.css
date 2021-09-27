@@ -50,6 +50,7 @@ h1 {
   justify-content: center;
   max-width: 100%;
   margin: auto;
+  padding-bottom: 100px;
 }
 
 section {
@@ -98,7 +99,6 @@ h3 {
 
 .precode {
   position: absolute;
-  display: none;
   top: 46px;
   left: 0;
   width: 100%;
@@ -107,9 +107,5 @@ h3 {
   background: rgba(255, 255, 255, 1);
 }
 
-.active {
-  display: block;
-}
 
-
-/*# sourceMappingURL=main.405cd4b9.chunk.css.map*/
+/*# sourceMappingURL=main.099cfe04.chunk.css.map*/
