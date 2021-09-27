@@ -1,47 +1,40 @@
 import React, { useState, Fragment } from "react";
 import CircularProgressBar from "./components/CircularProgressBar";
 
-const minimal = [
+const examples = [
   {
     id: 0,
+    name: "minimal",
     percent: 75
-  }
-];
-
-const simple = [
+  },
   {
     id: 1,
+    name: "simple",
     percent: 75,
     colorSlice: "#BF360C",
     colorCircle: "#f1f1f1",
     fontWeight: 100
-  }
-];
-
-const linearGradient = [
+  },
   {
     id: 2,
+    name: "linear gradient",
     linearGradient: ["yellow", "#ff0000"],
     percent: 75,
     colorCircle: "#e6e6e6",
     round: true
-  }
-];
-
-const counterclockwise = [
+  },
   {
     id: 3,
+    name: "counterclockwise",
     inverse: true,
     percent: 75,
     colorSlice: "#AB47BC",
     colorCircle: "#f1f1f1",
     fontWeight: 100
-  }
-];
-
-const strokeDasharray = [
+  },
   {
     id: 4,
+    name: "stroke-dasharray",
     strokeDasharray: "1, 2",
     percent: 75,
     colorSlice: "#F5F5F5",
@@ -49,44 +42,36 @@ const strokeDasharray = [
     stroke: 5,
     strokeBottom: 10,
     round: true
-  }
-];
-
-const animationOff = [
+  },
   {
     id: 5,
+    name: "animation off",
     animationOff: true,
     percent: 75,
     colorSlice: "#CDDC39",
     colorCircle: "#f1f1f1",
     fontWeight: 100
-  }
-];
-
-const withoutNumber = [
+  },
   {
     id: 6,
+    name: "without number",
     number: false,
     percent: 75,
     colorSlice: "#000",
     colorCircle: "#e6e6e6"
-  }
-];
-
-const rotation = [
+  },
   {
     id: 7,
+    name: "rotation",
     rotation: 90,
     percent: 75,
     colorSlice: "#ff8c69",
     colorCircle: "#f1f1f1",
     fontWeight: 100
-  }
-];
-
-const fill = [
+  },
   {
     id: 8,
+    name: "fill",
     fill: "#EFEBE9",
     percent: 75,
     stroke: 6,
@@ -95,12 +80,10 @@ const fill = [
     colorCircle: "#EFEBE9",
     fontSize: "1.3em",
     round: true
-  }
-];
-
-const unit = [
+  },
   {
     id: 9,
+    name: "unit",
     unit: "PL",
     percent: 75,
     stroke: 5,
@@ -108,34 +91,28 @@ const unit = [
     colorSlice: "#fff",
     colorCircle: "#F50057",
     round: true
-  }
-];
-
-const strokeBottom = [
+  },
   {
     id: 10,
+    name: "stroke-bottom",
     strokeBottom: 5,
     percent: 75,
     colorSlice: "#EC407A",
     colorCircle: "#f1f1f1",
     round: true
-  }
-];
-
-const speed = [
+  },
   {
     id: 11,
+    name: "speed",
     speed: 30,
     percent: 75,
     colorSlice: "#DD2C00",
     colorCircle: "#f1f1f1",
     round: true
-  }
-];
-
-const cut = [
+  },
   {
     id: 12,
+    name: "cut",
     cut: 30,
     percent: 75,
     rotation: 144,
@@ -143,24 +120,20 @@ const cut = [
     colorCircle: "#f1f1f1",
     textPosition: "1em",
     fontSize: "1.2rem"
-  }
-];
-
-const images = [
+  },
   {
     id: 13,
+    name: "images",
     percent: 75,
     fontWeight: 100,
     colorSlice: "#6200EA",
     colorCircle: "#f1f1f1",
     fontSize: "1rem",
     textPosition: "1.5em"
-  }
-];
-
-const imagesWithText = [
+  },
   {
     id: 14,
+    name: "image with text",
     percent: 75,
     colorSlice: "#795548",
     colorCircle: "#f1f1f1",
@@ -168,14 +141,71 @@ const imagesWithText = [
   }
 ];
 
+function CircularSection(object) {
+  const [isActive, setIsActive] = useState(false);
+
+  // remove name from object for presentation
+  const newObject = Object.keys(object).reduce((obj, key) => {
+    if (key !== "name") {
+      obj[key] = object[key];
+    }
+    return obj;
+  }, {});
+
+  return (
+    <section>
+      <div className="flex info">
+        <div className="info-name">{object.name}</div>
+        <div className="info-code" onClick={() => setIsActive(!isActive)}>
+          code
+        </div>
+      </div>
+      <CircularProgressBar {...object}>
+        {object.id === 13 && (
+          <img
+            src="https://picsum.photos/100/100"
+            style={{
+              width: "60px",
+              borderRadius: "50%",
+              marginTop: "-40px",
+              padding: "2px",
+              border: "3px solid salmon"
+            }}
+            alt="Random"
+          />
+        )}
+        {object.id === 14 && (
+          <Fragment>
+            <img
+              src="https://picsum.photos/100/100"
+              style={{
+                width: "60px",
+                borderRadius: "50%",
+                padding: "2px",
+                border: "2px solid black"
+              }}
+              alt="Images with text"
+            />
+            <div style={{ textAlign: "center", padding: "0 35px" }}>
+              Lorem, ipsum dolor.
+            </div>
+          </Fragment>
+        )}
+      </CircularProgressBar>
+      {isActive && (
+        <div className="precode">
+          <pre>
+            <code>{JSON.stringify(newObject, null, 2)}</code>
+          </pre>
+        </div>
+      )}
+    </section>
+  );
+}
+
 function App() {
   const [progress, setProgress] = useState(75);
   const percent = { percent: progress };
-
-  const onClick = (e) => {
-    e.preventDefault();
-    e.target.closest("section").lastElementChild.classList.toggle("active");
-  };
 
   return (
     <Fragment>
@@ -190,313 +220,10 @@ function App() {
           onChange={(event) => setProgress(parseInt(event.target.value, 10))}
         />
       </div>
-
       <div className="flex container">
-        <section>
-          <div className="flex info">
-            <div className="info-name">minimal</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {minimal.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(minimal[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">minimal width shadow</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          <div className="shadow">
-            {minimal.map((props, index) => {
-              const object = { ...props, ...percent };
-              return <CircularProgressBar key={index} {...object} />;
-            })}
-          </div>
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(minimal[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">simple</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {simple.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(simple[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">linear gradient</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {linearGradient.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(linearGradient[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">counterclockwise</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {counterclockwise.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(counterclockwise[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">stroke-dasharray</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {strokeDasharray.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(strokeDasharray[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">animation off</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {animationOff.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(animationOff[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">without number</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {withoutNumber.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(withoutNumber[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">rotation</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {rotation.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(rotation[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">fill</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {fill.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(fill[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">unit</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {unit.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(unit[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">stroke bottom</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {strokeBottom.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(strokeBottom[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">speed</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {speed.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(speed[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">cut</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {cut.map((props, index) => {
-            const object = { ...props, ...percent };
-            return <CircularProgressBar key={index} {...object} />;
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(cut[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-
-        <section>
-          <div className="flex info">
-            <div className="info-name">image</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {images.map((props, index) => {
-            const object = { ...props, ...percent };
-            return (
-              <CircularProgressBar key={index} {...object}>
-                <img
-                  src="https://picsum.photos/100/100"
-                  style={{
-                    width: "60px",
-                    borderRadius: "50%",
-                    marginTop: "-40px",
-                    padding: "2px",
-                    border: "3px solid salmon"
-                  }}
-                  alt="Random"
-                />
-              </CircularProgressBar>
-            );
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(images[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
-        <section>
-          <div className="flex info">
-            <div className="info-name">image without number</div>
-            <div className="info-code" onClick={onClick}>
-              code
-            </div>
-          </div>
-          {imagesWithText.map((props, index) => {
-            const object = { ...props, ...percent };
-            return (
-              <CircularProgressBar key={index} {...object}>
-                <img
-                  src="https://picsum.photos/100/100"
-                  style={{
-                    width: "60px",
-                    borderRadius: "50%",
-                    padding: "2px",
-                    border: "2px solid black"
-                  }}
-                  alt="Images with text"
-                />
-                <div style={{ textAlign: "center", padding: "0 35px" }}>
-                  Lorem, ipsum dolor.
-                </div>
-              </CircularProgressBar>
-            );
-          })}
-          <div className="precode">
-            <pre>
-              <code>{JSON.stringify(imagesWithText[0], null, 2)}</code>
-            </pre>
-          </div>
-        </section>
+        {examples.map((props, index) => (
+          <CircularSection key={index} {...{ ...props, ...percent }} />
+        ))}
       </div>
     </Fragment>
   );

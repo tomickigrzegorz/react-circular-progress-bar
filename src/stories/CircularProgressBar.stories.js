@@ -160,7 +160,7 @@ export const Simple = Template.bind({});
 Simple.args = {
   ...Minimal.args,
   colorSlice: "#CDDC39",
-  colorCircle: "#f1f1f1"
+  colorCircle: "#e6e6e6"
 };
 
 Simple.argTypes = {
@@ -175,7 +175,7 @@ AnimationOff.args = {
   animationOff: true,
   percent: 75,
   colorSlice: "#AA00FF",
-  colorCircle: "#f1f1f1"
+  colorCircle: "#e6e6e6"
 };
 
 // counter-clockwise
@@ -192,7 +192,7 @@ Cut.args = {
   percent: 75,
   rotation: 144,
   colorSlice: "#EC407A",
-  colorCircle: "#f1f1f1"
+  colorCircle: "#e6e6e6"
 };
 
 // fill
@@ -229,7 +229,7 @@ export const Image = TemplateImage.bind({});
 Image.args = {
   percent: 75,
   colorSlice: "#FF0000",
-  colorCircle: "#f1f1f1",
+  colorCircle: "#e6e6e6",
   textPosition: "1.7em",
   fontSize: "1rem",
   stroke: 6,
@@ -260,7 +260,7 @@ export const ImageWithYourText = TemplateImageWithText.bind({});
 ImageWithYourText.args = {
   percent: 75,
   colorSlice: "#ff8c69",
-  colorCircle: "#f1f1f1",
+  colorCircle: "#e6e6e6",
   number: false,
   round: true,
   stroke: 6
@@ -286,7 +286,7 @@ Rotation.args = {
   rotation: 90,
   percent: 75,
   colorSlice: "#ff8c69",
-  colorCircle: "#f1f1f1"
+  colorCircle: "#e6e6e6"
 };
 
 // speed
@@ -295,7 +295,7 @@ Speed.args = {
   speed: 30,
   percent: 75,
   colorSlice: "#DD2C00",
-  colorCircle: "#f1f1f1",
+  colorCircle: "#e6e6e6",
   round: true
 };
 
@@ -305,7 +305,7 @@ StrokeBottom.args = {
   strokeBottom: 5,
   percent: 75,
   colorSlice: "#EC407A",
-  colorCircle: "#f1f1f1",
+  colorCircle: "#e6e6e6",
   round: true
 };
 
