@@ -8,6 +8,7 @@ const Top = () => {
     id,
     rotation,
     linearGradient,
+    animationSmooth,
     inverse,
     counter,
     stroke,
@@ -28,6 +29,11 @@ const Top = () => {
     return inverse ? -angle : angle;
   };
 
+  const smoothAnimation =
+    animationSmooth !== undefined
+      ? { transition: `stroke-dashoffset ${animationSmooth}` }
+      : "";
+
   return (
     <>
       {linearGradient && (
@@ -41,7 +47,8 @@ const Top = () => {
         fill="none"
         style={{
           transform: `rotate(${rotation}deg)`,
-          transformOrigin: "50% 50%"
+          transformOrigin: "50% 50%",
+          ...smoothAnimation
         }}
         stroke={gradient}
         strokeWidth={stroke}
