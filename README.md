@@ -90,6 +90,10 @@ function App() {
         ...config,
         id: 0, // we indicate which component we want to change
         percent: Math.floor(Math.random() * 100 + 1)
+        colorSlice: "#000",
+        fontColor: "#F50057",
+        fontSize: "1.2rem",
+        fontWeight: 700
       });
     }, 3000);
     return () => clearInterval(interval);
@@ -191,6 +195,7 @@ You can also style this elements to create your own styles, example below:
 | id              | number  |             |         | If you want to update a component, you need to add an `id` to each of them. Also when you want to display several components with different gradients - `linearGradient` |
 | speed           | number  |             |         | Frame rate animation [fps]. Let's say you want the animation to be 60fps, just add the parameter `speed: 60`                                                             |
 | animationOff    | boolean |   `false`   |         | Turn off the progress animation                                                                                                                                          |
+| animationSmooth | string  |   ``   |         | The [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition) property allows you to create animations (a smooth transition effect), e.g. `500ms ease-out`                                                                                                                                           |
 | colorSlice      | string  | `'#00a1ff'` |         | Progress layer color and background ["#ffff00","brown" \*](#colors-names)                                                                                                |
 | colorCircle     | string  | `'#00a1ff'` |         | Bottom circle color Font ["#ffff00","brown" \*](#colors-names)                                                                                                           |
 | stroke          | number  |    `10`     |         | Stroke width, chart thickness                                                                                                                                            |

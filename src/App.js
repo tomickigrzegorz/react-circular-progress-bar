@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import CircularProgressBar from "./components/CircularProgressBar";
 
 const examples = [
@@ -138,6 +138,25 @@ const examples = [
     colorSlice: "#795548",
     colorCircle: "#f1f1f1",
     number: false
+  },
+  {
+    id: 15,
+    name: "smooth animation",
+    animationSmooth: "500ms ease-out",
+    percent: 75,
+    colorSlice: "#FF6D00",
+    colorCircle: "#f1f1f1"
+  }
+];
+
+const update = [
+  {
+    id: 55,
+    name: "update",
+    percent: 75,
+    colorSlice: "#BF360C",
+    colorCircle: "#f1f1f1",
+    fontWeight: 100
   }
 ];
 
@@ -207,6 +226,26 @@ function App() {
   const [progress, setProgress] = useState(75);
   const percent = { percent: progress };
 
+  const [first, setFirst] = useState(update[0]);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const typeFont = [100, 200, 300, 400, 500, 600, 700];
+      const colorHex = `#${Math.floor((Math.random() * 0xffffff) << 0).toString(
+        16
+      )}`;
+      setFirst({
+        ...update[0],
+        id: 55,
+        percent: Math.floor(Math.random() * 100 + 1),
+        colorSlice: colorHex,
+        fontColor: colorHex,
+        fontSize: `${Math.floor(Math.random() * (1.3 - 1 + 1) + 1)}rem`,
+        fontWeight: typeFont[Math.floor(Math.random() * typeFont.length)]
+      });
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <Fragment>
       <h1>circular-progress-bar</h1>
@@ -221,9 +260,15 @@ function App() {
         />
       </div>
       <div className="flex container">
-        {examples.map((props, index) => (
-          <CircularSection key={index} {...{ ...props, ...percent }} />
-        ))}
+        {examples.map((props, index) => {
+          const obj = { ...props, ...percent };
+          return <CircularSection key={index} {...obj} />;
+        })}
+
+        {update.map((props, index) => {
+          const obj = { ...props, ...percent, ...first };
+          return <CircularSection key={index} {...obj} />;
+        })}
       </div>
     </Fragment>
   );
