@@ -334,7 +334,7 @@ StrokeDasharray.argTypes = {
 // unit
 export const Unit = Template.bind({});
 Unit.args = {
-  id: 15, // important if you need style `unit` in css
+  id: 50, // important if you need style `unit` in css
   unit: "PL",
   percent: 75,
   stroke: 4,
@@ -356,4 +356,13 @@ WithoutNumber.args = {
 WithoutNumber.argTypes = {
   opacity: hide,
   linearGradient: hide
+};
+
+// without number
+export const AnimationSmooth = Template.bind({});
+AnimationSmooth.args = {
+  percent: 75,
+  animationSmooth: "1s ease-out",
+  colorSlice: "#FF6D00",
+  colorCircle: "#e6e6e6"
 };
