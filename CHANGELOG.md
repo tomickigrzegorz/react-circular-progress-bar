@@ -3,7 +3,7 @@
 ### Changed
 
 - `role=img` to `role=progressbar` - [progressbar role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role)
-- `animationSmooth` - new props
+- `animationSmooth` - new props, The [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition) property allows you to create animations (a smooth transition effect). 
 
 ## v1.0.24 (2021-09-27)
 
