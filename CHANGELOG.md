@@ -1,9 +1,19 @@
+## v1.1.0 (2022-01-03)
+
+### Changed
+- updating accessibility, change role from `img` to `progressbar`
+- adding `aria-valuenow`, `aria-valuemin` and `aria-valuemax` attributes
+
+### Fixed
+- test width `strokeDasharray`
+
 ## v1.0.25 (2021-10-21)
 
+### Added
+- `animationSmooth` - new props, The [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition) property allows you to create animations (a smooth transition effect). 
 ### Changed
 
 - `role=img` to `role=progressbar` - [progressbar role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_progressbar_role)
-- `animationSmooth` - new props, The [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/transition) property allows you to create animations (a smooth transition effect). 
 
 ## v1.0.24 (2021-09-27)
 
@@ -34,7 +44,7 @@
 - `unit` - different unit instead of percentage (%) inside the circle
 - `fill` - inner circle color, defaults `fill: "none"`
 
-## v0.1.20 (2021-08-19)
+## v0.1.19 (2021-08-19)
 
 ### Added
 

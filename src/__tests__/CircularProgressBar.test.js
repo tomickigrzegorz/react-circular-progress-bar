@@ -110,13 +110,26 @@ describe("CircularProgressBar", function () {
     expect(container.querySelector("[stroke-linecap='butt']")).toBeTruthy();
   });
 
-  test('checking if it exists `stroke-dasharray="10, 1"`', () => {
+  test('checking if it exists `data-angel="20"`', async () => {
+    const { container } = render(<CircularProgressBar percent={20} />);
+
+    await waitFor(() => {
+      expect(container.querySelector('[data-angel="20"]')).toBeTruthy();
+    });
+  });
+
+  test('checking if it exists `stroke-dasharray="1, 2"`', () => {
     const props = {
-      percent: 70,
-      strokeDasharray: "10, 1"
+      strokeDasharray: "1, 2",
+      percent: 75,
+      colorSlice: "#F5F5F5",
+      colorCircle: "#424242",
+      stroke: 5,
+      strokeBottom: 10,
+      round: true
     };
 
     const { container } = render(<CircularProgressBar {...props} />);
-    expect(container.querySelector("[stroke-dasharray='10, 1']")).toBeTruthy();
+    expect(container.querySelector('[stroke-dasharray="1, 2"]')).toBeTruthy();
   });
 });
