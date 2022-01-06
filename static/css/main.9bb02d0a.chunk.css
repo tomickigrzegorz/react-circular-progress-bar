@@ -108,5 +108,35 @@ h3 {
   overflow: auto;
 }
 
+@-webkit-keyframes heart {
+  0% {
+    -webkit-transform: scale(1.07);
+            transform: scale(1.07);
+  }
+  80% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
 
-/*# sourceMappingURL=main.9478a95c.chunk.css.map*/
+@keyframes heart {
+  0% {
+    -webkit-transform: scale(1.07);
+            transform: scale(1.07);
+  }
+  80% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
+  }
+}
+
+
+/*# sourceMappingURL=main.9bb02d0a.chunk.css.map*/
