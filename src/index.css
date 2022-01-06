@@ -107,3 +107,15 @@ h3 {
   background: rgba(255, 255, 255, 1);
   overflow: auto;
 }
+
+@keyframes heart {
+  0% {
+    transform: scale(1.07);
+  }
+  80% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
