@@ -187,6 +187,24 @@ You can also style this elements to create your own styles, example below:
 }
 ```
 
+Instead of adding styles to a component, you can add them in the configuration stage.
+```jsx
+const examples = [
+  {
+    percent: 75,
+    styles: {
+      borderRadius: "50%",
+      boxShadow: "inset 0 0 25px 10px #a2caff"
+    }
+  }
+];
+
+{examples.map((props, index) => {
+  return <CircularSection key={index} {...props} />;
+})}
+```
+See an example [Minimal Width Shadow](https://tomik23.github.io/react-circular-progress-bar/?path=/story/circular-progress-bar--minimal-width-shadow)
+
 ## Configuration of the plugin
 
 | props           |  type   |   default   | require | description                                                                                                                                                              |
@@ -215,6 +233,7 @@ You can also style this elements to create your own styles, example below:
 | fontWeight      | number  |    `400`    |         | 400, 600, ...                                                                                                                                                            |
 | fontColor       | string  | `'#365b74'` |         | Font color ["#ffff00","brown" \*](#colors-names)                                                                                                                         |
 | linearGradient  |  array  |             |         | Array of colors "lineargradient": ["#ffff00","brown" \*](#colors-names)                                                                                                  |
+| styles  |  object  |             |         | Possibility to add styles to parent div see example [Minimal Width Shadow](https://tomik23.github.io/react-circular-progress-bar/?path=/story/circular-progress-bar--minimal-width-shadow)                                                                  |
 
 ## Colors names
 

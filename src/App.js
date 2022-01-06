@@ -9,14 +9,23 @@ const examples = [
   },
   {
     id: 1,
-    name: "simple",
+    name: "minimal width shadow",
     percent: 75,
-    colorSlice: "#BF360C",
-    colorCircle: "#f1f1f1",
-    fontWeight: 100
+    styles: {
+      borderRadius: "50%",
+      boxShadow: "inset 0 0 25px 10px #a2caff"
+    }
   },
   {
     id: 2,
+    name: "simple",
+    colorSlice: "#BF360C",
+    colorCircle: "#f1f1f1",
+    fontWeight: 100,
+    percent: 75
+  },
+  {
+    id: 3,
     name: "linear gradient",
     linearGradient: ["yellow", "#ff0000"],
     percent: 75,
@@ -24,7 +33,7 @@ const examples = [
     round: true
   },
   {
-    id: 3,
+    id: 4,
     name: "counterclockwise",
     inverse: true,
     percent: 75,
@@ -33,7 +42,7 @@ const examples = [
     fontWeight: 100
   },
   {
-    id: 4,
+    id: 5,
     name: "stroke-dasharray",
     strokeDasharray: "1, 2",
     percent: 75,
@@ -44,7 +53,7 @@ const examples = [
     round: true
   },
   {
-    id: 5,
+    id: 6,
     name: "animation off",
     animationOff: true,
     percent: 75,
@@ -53,7 +62,7 @@ const examples = [
     fontWeight: 100
   },
   {
-    id: 6,
+    id: 7,
     name: "without number",
     number: false,
     percent: 75,
@@ -61,7 +70,7 @@ const examples = [
     colorCircle: "#e6e6e6"
   },
   {
-    id: 7,
+    id: 8,
     name: "rotation",
     rotation: 90,
     percent: 75,
@@ -70,7 +79,7 @@ const examples = [
     fontWeight: 100
   },
   {
-    id: 8,
+    id: 9,
     name: "fill",
     fill: "#EFEBE9",
     percent: 75,
@@ -82,7 +91,7 @@ const examples = [
     round: true
   },
   {
-    id: 9,
+    id: 10,
     name: "unit",
     unit: "PL",
     percent: 75,
@@ -93,7 +102,7 @@ const examples = [
     round: true
   },
   {
-    id: 10,
+    id: 11,
     name: "stroke-bottom",
     strokeBottom: 5,
     percent: 75,
@@ -102,7 +111,7 @@ const examples = [
     round: true
   },
   {
-    id: 11,
+    id: 12,
     name: "speed",
     speed: 30,
     percent: 75,
@@ -111,7 +120,7 @@ const examples = [
     round: true
   },
   {
-    id: 12,
+    id: 13,
     name: "cut",
     cut: 30,
     percent: 75,
@@ -122,27 +131,36 @@ const examples = [
     fontSize: "1.2rem"
   },
   {
-    id: 13,
-    name: "images",
-    percent: 75,
-    fontWeight: 100,
-    colorSlice: "#6200EA",
-    colorCircle: "#f1f1f1",
-    fontSize: "1rem",
-    textPosition: "1.5em"
-  },
-  {
     id: 14,
-    name: "image with text",
+    name: "textposition",
     percent: 75,
-    colorSlice: "#795548",
+    textPosition: "1.5em",
+    colorSlice: "#880E4F",
     colorCircle: "#f1f1f1",
-    number: false
+    fontSize: "1em"
   },
   {
     id: 15,
+    name: "mixed",
+    percent: 75,
+    textPosition: "0em",
+    colorSlice: "#FF1744",
+    colorCircle: "#fff",
+    stroke: 5,
+    strokeBottom: 10,
+    strokeDasharray: "1, 3",
+    fontSize: "1.2rem",
+    fontWeight: 600,
+    round: true,
+    styles: {
+      borderRadius: "50%",
+      boxShadow: "inset 0 0 25px 10px #f50057"
+    }
+  },
+  {
+    id: 16,
     name: "smooth animation",
-    animationSmooth: "500ms ease-out",
+    animationSmooth: "1s ease-out",
     percent: 75,
     colorSlice: "#FF6D00",
     colorCircle: "#f1f1f1"
@@ -180,33 +198,36 @@ function CircularSection(object) {
         </div>
       </div>
       <CircularProgressBar {...object}>
-        {object.id === 13 && (
+        {object.id === 14 && (
           <img
             src="https://picsum.photos/100/100"
             style={{
-              width: "60px",
+              position: "absolute",
+              width: "50px",
               borderRadius: "50%",
-              marginTop: "-40px",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -90%)",
               padding: "2px",
               border: "3px solid salmon"
             }}
             alt="Random"
           />
         )}
-        {object.id === 14 && (
+        {object.id === 15 && (
           <Fragment>
-            <img
-              src="https://picsum.photos/100/100"
+            <div
               style={{
-                width: "60px",
-                borderRadius: "50%",
-                padding: "2px",
-                border: "2px solid black"
-              }}
-              alt="Images with text"
-            />
-            <div style={{ textAlign: "center", padding: "0 35px" }}>
-              Lorem, ipsum dolor.
+                position: "absolute",
+                fontSize: "2rem",
+                margin: "auto",
+                width: "100%",
+                bottom: "45px",
+                textAlign: "center",
+                animation: "heart 0.8s linear infinite",
+                textShadow: "0px 0px 10px #f50057"
+              }}>
+              &#10084;
             </div>
           </Fragment>
         )}
