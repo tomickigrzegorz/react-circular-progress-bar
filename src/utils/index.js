@@ -26,8 +26,9 @@ const useOnScreen = (ref) => {
   return isIntersecting;
 };
 
-const styleObj = ({ size }) => {
+const styleObj = ({ styles, size }) => {
   return {
+    ...styles,
     width: size,
     height: size
   };
