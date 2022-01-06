@@ -12,7 +12,8 @@ module.exports = {
   extends: [
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:storybook/recommended"
   ],
   plugins: ["prettier"],
   rules: {
@@ -21,6 +22,11 @@ module.exports = {
     "react/prop-types": "off",
     "comma-dangle": ["error", "only-multiline"],
     "linebreak-style": 0,
-    "no-param-reassign": [2, { props: false }]
+    "no-param-reassign": [
+      2,
+      {
+        props: false
+      }
+    ]
   }
 };
