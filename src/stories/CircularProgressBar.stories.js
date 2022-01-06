@@ -2,17 +2,6 @@ import React from "react";
 
 import CircularProgressBar from "../components/CircularProgressBar";
 
-const styleObj = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  minHeight: "100%",
-  padding: "40px",
-  margin: "-1rem auto",
-  fontFamily:
-    "-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji"
-};
-
 export default {
   title: "Circular-Progress-Bar",
   component: CircularProgressBar,
@@ -56,11 +45,6 @@ export default {
     round: {
       description: "Path rounding",
       table: { defaultValue: { summary: "false" } }
-    },
-    opacity: {
-      control: { type: "number", min: 1, max: 10, step: 1 },
-      description: "Opacity box-shadow, 10=1, 9=0.9 ... 1=0.1",
-      table: { defaultValue: { summary: "10" } }
     },
     number: {
       description:
@@ -118,13 +102,7 @@ export default {
       description: 'stroke-dasharray: "10,1"'
     }
   },
-  decorators: [
-    (Story) => (
-      <div style={styleObj}>
-        <Story />
-      </div>
-    )
-  ]
+  decorators: [(Story) => <Story />]
 };
 
 const hide = {
@@ -147,7 +125,17 @@ Minimal.args = {
   inverse: false
 };
 
-Minimal.argTypes = {
+// minimal
+export const MinimalWidthShadow = Template.bind({});
+MinimalWidthShadow.args = {
+  percent: 75,
+  styles: {
+    borderRadius: "50%",
+    boxShadow: "inset 0 0 25px 10px #a2caff"
+  }
+};
+
+MinimalWidthShadow.argTypes = {
   linearGradient: hide,
   colorCircle: hide,
   strokeBottom: hide,
@@ -159,8 +147,8 @@ Minimal.argTypes = {
 export const Simple = Template.bind({});
 Simple.args = {
   ...Minimal.args,
-  colorSlice: "#CDDC39",
-  colorCircle: "#e6e6e6"
+  colorSlice: "#BF360C",
+  colorCircle: "#f1f1f1"
 };
 
 Simple.argTypes = {
@@ -169,158 +157,40 @@ Simple.argTypes = {
   strokeDasharray: hide
 };
 
-// animation off
-export const AnimationOff = Template.bind({});
-AnimationOff.args = {
-  animationOff: true,
-  percent: 75,
-  colorSlice: "#AA00FF",
-  colorCircle: "#e6e6e6"
-};
-
-// counter-clockwise
-export const CounterClockwise = Template.bind({});
-CounterClockwise.args = {
-  inverse: true,
-  percent: 75
-};
-
-// cut
-export const Cut = Template.bind({});
-Cut.args = {
-  cut: 30,
-  percent: 75,
-  rotation: 144,
-  colorSlice: "#EC407A",
-  colorCircle: "#e6e6e6"
-};
-
-// fill
-export const Fill = Template.bind({});
-Fill.args = {
-  fill: "#EFEBE9",
-  percent: 75,
-  stroke: 6,
-  strokeBottom: 10,
-  colorSlice: "#4E342E",
-  colorCircle: "#EFEBE9",
-  round: true
-};
-
-// image
-const TemplateImage = (args) => (
-  <CircularProgressBar {...args}>
-    <img
-      src="https://picsum.photos/100/100"
-      style={{
-        width: "50px",
-        borderRadius: "50%",
-        marginTop: "-40px",
-        padding: "2px",
-        border: "3px solid #FF0000"
-      }}
-      alt="Random image"
-    />
-  </CircularProgressBar>
-);
-
-// image
-export const Image = TemplateImage.bind({});
-Image.args = {
-  percent: 75,
-  colorSlice: "#FF0000",
-  colorCircle: "#e6e6e6",
-  textPosition: "1.7em",
-  fontSize: "1rem",
-  stroke: 6,
-  round: true
-};
-
-// image with text
-const TemplateImageWithText = (args) => (
-  <CircularProgressBar {...args}>
-    <img
-      src="https://picsum.photos/100/100"
-      style={{
-        width: "50px",
-        borderRadius: "50%",
-        padding: "2px",
-        border: "3px solid #ff8c69"
-      }}
-      alt="Random image"
-    />
-    <div style={{ textAlign: "center", fontSize: "1rem", padding: "0 40px" }}>
-      Lorem ipsum dolor sit.
-    </div>
-  </CircularProgressBar>
-);
-
-// image with text
-export const ImageWithYourText = TemplateImageWithText.bind({});
-ImageWithYourText.args = {
-  percent: 75,
-  colorSlice: "#ff8c69",
-  colorCircle: "#e6e6e6",
-  number: false,
-  round: true,
-  stroke: 6
-};
-
 // linear gradient
-export const linearGradient = Template.bind({});
-linearGradient.args = {
+export const LinearGradient = Template.bind({});
+LinearGradient.args = {
   percent: 75,
   round: true,
   colorCircle: "#e6e6e6",
   linearGradient: ["yellow", "#ff0000"]
 };
 
-linearGradient.argTypes = {
+LinearGradient.argTypes = {
   colorSlice: hide,
   opacity: hide
 };
 
-// rotation
-export const Rotation = Template.bind({});
-Rotation.args = {
-  rotation: 90,
+// counter-clockwise
+export const CounterClockwise = Template.bind({});
+CounterClockwise.args = {
+  inverse: true,
   percent: 75,
-  colorSlice: "#ff8c69",
-  colorCircle: "#e6e6e6"
-};
-
-// speed
-export const Speed = Template.bind({});
-Speed.args = {
-  speed: 30,
-  percent: 75,
-  colorSlice: "#DD2C00",
-  colorCircle: "#e6e6e6",
-  round: true
-};
-
-// stroke bottom
-export const StrokeBottom = Template.bind({});
-StrokeBottom.args = {
-  strokeBottom: 5,
-  percent: 75,
-  colorSlice: "#EC407A",
-  colorCircle: "#e6e6e6",
-  round: true
+  colorSlice: "#AB47BC",
+  colorCircle: "#f1f1f1",
+  fontWeight: 100
 };
 
 // stroke-dasharray
 export const StrokeDasharray = Template.bind({});
 StrokeDasharray.args = {
+  name: "stroke-dasharray",
+  strokeDasharray: "1, 2",
   percent: 75,
-  colorSlice: "#FFF",
-  colorCircle: "#37474F",
-  stroke: 3,
+  colorSlice: "#F5F5F5",
+  colorCircle: "#424242",
+  stroke: 5,
   strokeBottom: 10,
-  strokeDasharray: "10, 1",
-  fontSize: "1.6rem",
-  inverse: false,
-  number: true,
   round: true
 };
 
@@ -331,17 +201,14 @@ StrokeDasharray.argTypes = {
   cut: hide
 };
 
-// unit
-export const Unit = Template.bind({});
-Unit.args = {
-  id: 50, // important if you need style `unit` in css
-  unit: "PL",
+// animation off
+export const AnimationOff = Template.bind({});
+AnimationOff.args = {
+  animationOff: true,
   percent: 75,
-  stroke: 4,
-  strokeBottom: 10,
-  colorSlice: "#fff",
-  colorCircle: "#F50057",
-  round: true
+  colorSlice: "#CDDC39",
+  colorCircle: "#f1f1f1",
+  fontWeight: 100
 };
 
 // without number
@@ -358,11 +225,143 @@ WithoutNumber.argTypes = {
   linearGradient: hide
 };
 
-// without number
-export const AnimationSmooth = Template.bind({});
-AnimationSmooth.args = {
+// rotation
+export const Rotation = Template.bind({});
+Rotation.args = {
+  rotation: 90,
   percent: 75,
-  animationSmooth: "1s ease-out",
-  colorSlice: "#FF6D00",
+  colorSlice: "#ff8c69",
+  colorCircle: "#e6e6e6",
+  fontWeight: 100
+};
+
+// fill
+export const Fill = Template.bind({});
+Fill.args = {
+  fill: "#EFEBE9",
+  percent: 75,
+  stroke: 6,
+  strokeBottom: 10,
+  colorSlice: "#4E342E",
+  colorCircle: "#EFEBE9",
+  round: true
+};
+
+// unit
+export const Unit = Template.bind({});
+Unit.args = {
+  id: 50, // important if you need style `unit` in css
+  unit: "PL",
+  percent: 75,
+  stroke: 4,
+  strokeBottom: 10,
+  colorSlice: "#fff",
+  colorCircle: "#F50057",
+  round: true
+};
+
+// stroke bottom
+export const StrokeBottom = Template.bind({});
+StrokeBottom.args = {
+  strokeBottom: 5,
+  percent: 75,
+  colorSlice: "#EC407A",
+  colorCircle: "#e6e6e6",
+  round: true
+};
+
+// speed
+export const Speed = Template.bind({});
+Speed.args = {
+  speed: 30,
+  percent: 75,
+  colorSlice: "#DD2C00",
+  colorCircle: "#e6e6e6",
+  round: true
+};
+
+// cut
+export const Cut = Template.bind({});
+Cut.args = {
+  cut: 30,
+  percent: 75,
+  rotation: 144,
+  colorSlice: "#EC407A",
   colorCircle: "#e6e6e6"
+};
+
+// textposition
+const TemplateTextPosition = (args) => (
+  <CircularProgressBar {...args}>
+    <img
+      src="https://picsum.photos/100/100"
+      style={{
+        position: "absolute",
+        width: "50px",
+        borderRadius: "50%",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -90%)",
+        padding: "2px",
+        border: "3px solid salmon"
+      }}
+      alt="Random image"
+    />
+  </CircularProgressBar>
+);
+
+// textposition
+export const Textposition = TemplateTextPosition.bind({});
+Textposition.args = {
+  textPosition: "1.5em",
+  percent: 75,
+  colorSlice: "#880E4F",
+  colorCircle: "#f1f1f1",
+  fontSize: "1em"
+};
+
+// mixed
+const TemplateMixed = (args) => (
+  <CircularProgressBar {...args}>
+    <div
+      style={{
+        position: "absolute",
+        fontSize: "2rem",
+        margin: "auto",
+        width: "100%",
+        bottom: "45px",
+        textAlign: "center",
+        animation: "heart 0.8s linear infinite",
+        textShadow: "0px 0px 10px #f50057"
+      }}>
+      &#10084;
+    </div>
+  </CircularProgressBar>
+);
+
+// mixed
+export const Mixed = TemplateMixed.bind({});
+Mixed.args = {
+  percent: 75,
+  textPosition: "0em",
+  colorSlice: "#FF1744",
+  colorCircle: "#fff",
+  stroke: 5,
+  strokeBottom: 10,
+  strokeDasharray: "1, 3",
+  fontSize: "1.2rem",
+  fontWeight: 600,
+  styles: {
+    borderRadius: "50%",
+    boxShadow: "inset 0 0 25px 10px #f50057"
+  }
+};
+
+// smooth animation
+export const SmoothAnimation = Template.bind({});
+SmoothAnimation.args = {
+  animationSmooth: "1s ease-out",
+  percent: 75,
+  colorSlice: "#FF6D00",
+  colorCircle: "#f1f1f1"
 };
