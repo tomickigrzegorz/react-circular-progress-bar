@@ -1,3 +1,11 @@
+## v1.1.1 (2022-01-06)
+
+### Added
+- `styles` - new props
+- an example of using the `styles` prop
+### Changed
+- remove extra `styleObj` div
+
 ## v1.1.0 (2022-01-03)
 
 ### Changed
