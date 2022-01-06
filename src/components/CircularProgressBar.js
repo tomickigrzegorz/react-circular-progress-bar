@@ -7,8 +7,6 @@ import Background from "./Background";
 import Wrapper from "./Wrapper";
 import Top from "./Top";
 
-import StyleCenter from "./StyleCenter";
-
 import { CircleType, CircleDefaultProps } from "../types";
 
 import { styleObj, useOnScreen } from "../utils";
@@ -65,7 +63,7 @@ const CircularProgressBar = (props) => {
   return (
     <div ref={ref} style={styleObj(props)} data-angel={counter}>
       <PropsContext.Provider value={value}>
-        {children && <StyleCenter />}
+        {children}
         <Wrapper>
           {props.colorCircle && <Background />}
           <Top />
