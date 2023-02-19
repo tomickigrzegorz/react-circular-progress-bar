@@ -7,11 +7,11 @@ React library to help developers to draw animated, cross-browser, highly customi
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@tomik23/react-circular-progress-bar">
-    <img src="https://badge.fury.io/js/%40tomik23%2Freact-circular-progress-bar.svg">
+  <a href="https://www.npmjs.com/package/@tomickigrzegorz/react-circular-progress-bar">
+    <img src="https://badge.fury.io/js/%tomickigrzegorz%2Freact-circular-progress-bar.svg">
   </a>
-  <a href="https://bundlephobia.com/package/@tomik23/react-circular-progress-bar">
-    <img src="https://img.shields.io/bundlephobia/min/@tomik23/react-circular-progress-bar">
+  <a href="https://bundlephobia.com/package/@tomickigrzegorz/react-circular-progress-bar">
+    <img src="https://img.shields.io/bundlephobia/min/@tomickigrzegorz/react-circular-progress-bar">
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green.svg">
@@ -19,25 +19,25 @@ React library to help developers to draw animated, cross-browser, highly customi
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/circular-progress-bar.png">
+  <img src="https://raw.githubusercontent.com/tomickigrzegorz/react-circular-progress-bar/main/assets/circular-progress-bar.png">
 </p>
 
 ## Demo
 
-See the demo - [example](https://tomik23.github.io/react-circular-progress-bar/)
+See the demo - [example](https://tomickigrzegorz.github.io/react-circular-progress-bar/)
 
 ## Install
 
 ```bash
-yarn add @tomik23/react-circular-progress-bar
+yarn add @tomickigrzegorz/react-circular-progress-bar
 # or
-npm install @tomik23/react-circular-progress-bar
+npm install @tomickigrzegorz/react-circular-progress-bar
 ```
 
 ## Usage
 
 ```jsx
-import { CircularProgressBar } from "@tomik23/react-circular-progress-bar";
+import { CircularProgressBar } from "@tomickigrzegorz/react-circular-progress-bar";
 ```
 
 ```jsx
@@ -115,7 +115,7 @@ function App() {
 ### Add photos and text
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/image-with-text.png">
+  <img src="https://raw.githubusercontent.com/tomickigrzegorz/react-circular-progress-bar/main/assets/image-with-text.png">
 </p>
 
 ```jsx
@@ -147,7 +147,7 @@ const config = {
 ### Add photos and percent animation
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/tomik23/react-circular-progress-bar/main/assets/image-with-procent.png">
+  <img src="https://raw.githubusercontent.com/tomickigrzegorz/react-circular-progress-bar/main/assets/image-with-procent.png">
 </p>
 
 ```jsx
@@ -206,7 +206,7 @@ const examples = [
   return <CircularSection key={index} {...props} />;
 })}
 ```
-See an example [Minimal Width Shadow](https://tomik23.github.io/react-circular-progress-bar/?path=/story/circular-progress-bar--minimal-width-shadow)
+See an example [Minimal Width Shadow](https://tomickigrzegorz.github.io/react-circular-progress-bar/?path=/story/circular-progress-bar--minimal-width-shadow)
 
 ## Configuration of the plugin
 
@@ -235,7 +235,7 @@ See an example [Minimal Width Shadow](https://tomik23.github.io/react-circular-p
 | fontWeight      | number  |    `400`    |         | 400, 600, ... |
 | fontColor       | string  | `'#365b74'` |         | Font color ["#ffff00","brown" \*](#colors-names) |
 | linearGradient  |  array  |             |         | Array of colors "lineargradient": ["#ffff00","brown" \*](#colors-names) |
-| styles          |  object |             |         | Possibility to add styles to parent div see example [Minimal Width Shadow](https://tomik23.github.io/react-circular-progress-bar/?path=/story/circular-progress-bar--minimal-width-shadow) |
+| styles          |  object |             |         | Possibility to add styles to parent div see example [Minimal Width Shadow](https://tomickigrzegorz.github.io/react-circular-progress-bar/?path=/story/circular-progress-bar--minimal-width-shadow) |
 
 ## Colors names
 

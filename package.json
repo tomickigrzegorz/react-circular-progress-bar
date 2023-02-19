@@ -1,6 +1,6 @@
 {
-  "name": "@tomik23/react-circular-progress-bar",
-  "version": "1.1.1",
+  "name": "@tomickigrzegorz/react-circular-progress-bar",
+  "version": "1.1.2",
   "private": false,
   "license": "MIT",
   "main": "dist/index.js",
@@ -24,7 +24,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tomik23/react-circular-progress-bar"
+    "url": "https://github.com/tomickigrzegorz/react-circular-progress-bar"
   },
   "eslintConfig": {
     "extends": [
@@ -61,7 +61,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://github.com/tomik23/react-circular-progress-bar",
+  "homepage": "https://github.com/tomickigrzegorz/react-circular-progress-bar",
   "peerDependencies": {
     "react": ">=16.8.0"
   },
