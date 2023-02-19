@@ -12,7 +12,7 @@
     "deploy": "gh-pages -d storybook-static",
     "start:storybook": "npm run storybook",
     "build": "rollup -c",
-    "start": "react-scripts start",
+    "start": "react-scripts --openssl-legacy-provider start",
     "test": "react-scripts test",
     "coverage": "react-scripts test --env=jsdom --watchAll=false --coverage",
     "storybook": "start-storybook -p 6006",
