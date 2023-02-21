@@ -1,36 +1,36 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import del from 'rollup-plugin-delete';
-import { terser } from 'rollup-plugin-terser';
+import babel from "rollup-plugin-babel";
+import commonjs from "@rollup/plugin-commonjs";
+import resolve from "@rollup/plugin-node-resolve";
+import del from "rollup-plugin-delete";
+import { terser } from "rollup-plugin-terser";
 
-import pkg from './package.json';
+import pkg from "./package.json";
 
 export default {
-  input: './src/components/index.js',
+  input: "./src/components/index.js",
   output: [
     {
       file: pkg.main,
-      format: 'cjs',
+      format: "cjs"
     },
     {
       file: pkg.module,
-      format: 'esm',
-    },
+      format: "esm"
+    }
   ],
   external: [
     ...Object.keys(pkg.dependencies || {}),
-    ...Object.keys(pkg.peerDependencies || {}),
+    ...Object.keys(pkg.peerDependencies || {})
   ],
   plugins: [
     del({
-      targets: 'dist/*',
+      targets: "dist/*"
     }),
     babel({
-      exclude: 'node_modules/**',
+      exclude: "node_modules/**"
     }),
     resolve(),
     commonjs(),
-    terser(),
-  ],
+    terser()
+  ]
 };
